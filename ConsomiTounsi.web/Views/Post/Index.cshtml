@@ -147,7 +147,6 @@
                                             <!-- Bootstrap Modal Dialog For Delete post-->
                                             @*******************************************************************@
                                             <button class="btn" data-target="#DeleteModal_@item.PostId" data-toggle="modal"><i class="fa fa-trash" style="color:red"></i></button>
-                                            @*******************************************************************@
                                             <div class="modal fade" id="DeleteModal_@item.PostId" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
@@ -163,6 +162,7 @@
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="submit" class="btn btn-danger"> @Html.ActionLink("Confirm", "Delete", new { id = item.PostId })</button>
+
                                                                     <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Cancel</button>
                                                                 </div>
                                                             </div>
