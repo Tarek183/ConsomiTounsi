@@ -209,9 +209,6 @@ namespace ConsomiTounsi.web.Controllers
         [HttpPost]
         public ActionResult CreateComment(PostComment pc)
         {
-            //Post post = ctx.Posts.Find(id);
-            //Post post = ctx.Posts.ToList().Find(u => u.PostId == id);
-            // Post id = PS.GetById(pc.PostId);
             Comment c = new Comment()
             {
                 ContentComment = pc.ContentComment,
@@ -220,7 +217,6 @@ namespace ConsomiTounsi.web.Controllers
                 DislikeComment = 0,
                 PostId = pc.PostId
             };
-            //ViewBag.PostId = new SelectList(ctx.Posts, "PostId", "Content", pc.PostId);
             c.UserId = User.Identity.GetUserId<string>();
             CS.Add(c);
             CS.Commit();

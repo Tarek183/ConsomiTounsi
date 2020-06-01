@@ -13,17 +13,17 @@ namespace ConsomiTounsi.web.Controllers
 {
     public class CommentApiController : ApiController
     {
-        ICommentService CS;
+        ICommentService CommentServ;
         List<CommentModel> result = new List<CommentModel>();
         public CommentApiController()
         {
-            CS = new CommentService();
+            CommentServ = new CommentService();
             Index();
             result = Index().ToList();
         }
         public List<CommentModel> Index()
         {
-            IEnumerable<Comment> Comments = CS.GetMany();
+            IEnumerable<Comment> Comments = CommentServ.GetMany();
             List<CommentModel> CommentsXml = new List<CommentModel>();
             foreach (Comment c in Comments)
             {
@@ -48,15 +48,15 @@ namespace ConsomiTounsi.web.Controllers
         // GET api/<controller>/5
         public Comment Get(int id)
         {
-            Comment comment = CS.GetById(id);
+            Comment comment = CommentServ.GetById(id);
             return comment;
         }
 
         // POST api/<controller>
         public Comment Post(Comment comment)
         {
-            CS.Add(comment);
-            CS.Commit();
+            CommentServ.Add(comment);
+            CommentServ.Commit();
             return comment;
         }
 
@@ -96,9 +96,9 @@ namespace ConsomiTounsi.web.Controllers
         // DELETE api/<controller>/5
         public IHttpActionResult Delete(int id)
         {
-            Comment comment = CS.GetById(id);
-            CS.Delete(comment);
-            CS.Commit();
+            Comment comment = CommentServ.GetById(id);
+            CommentServ.Delete(comment);
+            CommentServ.Commit();
             return Ok(comment);
         }
     }
