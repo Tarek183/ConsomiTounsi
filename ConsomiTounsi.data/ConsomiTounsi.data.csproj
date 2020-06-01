@@ -60,7 +60,6 @@
     <Compile Include="Configurations\CommentConfiguration.cs" />
     <Compile Include="Configurations\IdentityUserLoginConfiguration.cs" />
     <Compile Include="Configurations\IdentityUserRoleConfiguration.cs" />
-    <Compile Include="Configurations\PostConfiguration.cs" />
     <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="Infrastructure\DataBaseFactory.cs" />
     <Compile Include="Infrastructure\Disposable.cs" />
@@ -69,9 +68,9 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\202005261655218_Firstmig.cs" />
-    <Compile Include="Migrations\202005261655218_Firstmig.designer.cs">
-      <DependentUpon>202005261655218_Firstmig.cs</DependentUpon>
+    <Compile Include="Migrations\202006011310085_FirstMig.cs" />
+    <Compile Include="Migrations\202006011310085_FirstMig.designer.cs">
+      <DependentUpon>202006011310085_FirstMig.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyContext.cs" />
@@ -91,8 +90,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005261655218_Firstmig.resx">
-      <DependentUpon>202005261655218_Firstmig.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006011310085_FirstMig.resx">
+      <DependentUpon>202006011310085_FirstMig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

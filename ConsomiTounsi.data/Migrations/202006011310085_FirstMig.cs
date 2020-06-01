@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Firstmig : DbMigration
+    public partial class FirstMig : DbMigration
     {
         public override void Up()
         {
@@ -17,11 +17,11 @@
                         LikeComment = c.Int(nullable: false),
                         DislikeComment = c.Int(nullable: false),
                         PostId = c.Int(),
-                        UserId = c.String(nullable: false, maxLength: 128),
+                        UserId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.CommentId)
-                .ForeignKey("dbo.Posts", t => t.PostId)
-                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.Posts", t => t.PostId, cascadeDelete: true)
+                .ForeignKey("dbo.Users", t => t.UserId)
                 .Index(t => t.PostId)
                 .Index(t => t.UserId);
             
@@ -134,12 +134,12 @@
         {
             DropForeignKey("dbo.IdentityUserRoles", "IdentityRole_Id", "dbo.IdentityRoles");
             DropForeignKey("dbo.Contacts", "UserId", "dbo.Users");
+            DropForeignKey("dbo.Comments", "UserId", "dbo.Users");
+            DropForeignKey("dbo.Comments", "PostId", "dbo.Posts");
             DropForeignKey("dbo.IdentityUserRoles", "UserId", "dbo.Users");
             DropForeignKey("dbo.Posts", "UserId", "dbo.Users");
             DropForeignKey("dbo.IdentityUserLogins", "User_Id", "dbo.Users");
-            DropForeignKey("dbo.Comments", "UserId", "dbo.Users");
             DropForeignKey("dbo.IdentityUserClaims", "UserId", "dbo.Users");
-            DropForeignKey("dbo.Comments", "PostId", "dbo.Posts");
             DropIndex("dbo.Contacts", new[] { "UserId" });
             DropIndex("dbo.IdentityUserRoles", new[] { "IdentityRole_Id" });
             DropIndex("dbo.IdentityUserRoles", new[] { "UserId" });

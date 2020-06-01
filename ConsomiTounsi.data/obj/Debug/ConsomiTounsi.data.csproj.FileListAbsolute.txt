@@ -33,8 +33,8 @@ C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.data\bin\Debug\EntityFramewo
 C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.data\obj\Debug\ConsomiTounsi.data.csprojAssemblyReference.cache
-C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.data\obj\Debug\ConsomiTounsi.data.Migrations.Firstmig.resources
-C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.data\obj\Debug\ConsomiTounsi.data.csproj.GenerateResource.cache
 C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.data\obj\Debug\ConsomiTounsi.data.csproj.CopyComplete
 C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.data\obj\Debug\ConsomiTounsi.data.dll
 C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.data\obj\Debug\ConsomiTounsi.data.pdb
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.data\obj\Debug\ConsomiTounsi.data.Migrations.FirstMig.resources
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.data\obj\Debug\ConsomiTounsi.data.csproj.GenerateResource.cache
