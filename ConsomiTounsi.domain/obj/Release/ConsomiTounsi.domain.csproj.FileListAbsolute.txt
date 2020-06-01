@@ -1,0 +1,15 @@
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.domain\bin\Release\ConsomiTounsi.domain.dll.config
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.domain\bin\Release\ConsomiTounsi.domain.dll
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.domain\bin\Release\ConsomiTounsi.domain.pdb
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.domain\bin\Release\EntityFramework.dll
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.domain\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.domain\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.domain\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.domain\bin\Release\EntityFramework.xml
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.domain\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.domain\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.domain\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.domain\obj\Release\ConsomiTounsi.domain.csprojAssemblyReference.cache
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.domain\obj\Release\ConsomiTounsi.domain.csproj.CopyComplete
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.domain\obj\Release\ConsomiTounsi.domain.dll
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.domain\obj\Release\ConsomiTounsi.domain.pdb

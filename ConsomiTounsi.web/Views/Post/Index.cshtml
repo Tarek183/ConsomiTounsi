@@ -1,0 +1,305 @@
+﻿@model ConsomiTounsi.web.ViewModel.PostComment
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Google Webfont-->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600,600italic,700' rel='stylesheet' type='text/css'>
+    <!--Favicon-->
+    <link rel="shortcut icon" type="image/png" href="images/fav.png" />
+    @*<link href="~/CSS/rating/boot.min.css" rel="stylesheet" />*@
+    <link href="~/CSS/rating/font.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/rating/jquery.min.js"></script>
+    <script src="~/Scripts/rating/star-rating.js"></script>
+    <link href="~/CSS/rating/star-rating.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="container">
+        <!-- Timeline
+        ================================================= -->
+        <div class="timeline">
+            <div class="timeline-cover">
+                <!--Timeline Menu for Large Screens-->
+                <div class="timeline-nav-bar hidden-sm hidden-xs">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="profile-info">
+                                <img src="~/images/image.jpg" alt="" class="img-responsive profile-photo" />
+                                <h3>@ViewBag.UserName</h3>
+                                <p class="text-muted">@ViewBag.Role</p>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <ul class="list-inline profile-menu">
+                                <li>
+                                    <a href="~/Views/Post/AddProduct.cshtml" class="active">
+                                        @Html.ActionLink("Chat", "Index", "Post")
+                                    </a>
+                                </li>
+                                <li>@Html.ActionLink("About", "About", "Home")</li>
+                                <li>@Html.ActionLink("Contact", "CreateContact", "Home")</li>
+                            </ul>
+                            <!-- <ul class="follow-me list-inline">
+                              <li>1,299 people following her</li>
+                              <li><button class="btn-primary">Add Friend</button></li>
+                            </ul> -->
+                        </div>
+                    </div>
+                </div><!--Timeline Menu for Large Screens End-->
+                <!--Timeline Menu for Small Screens-->
+                <div class="navbar-mobile hidden-lg hidden-md">
+                    <div class="profile-info">
+                        <img src="~/images/user.jpg" alt="" class="img-responsive profile-photo" />
+                    <p class="text-muted">@ViewBag.Role</p>
+                    </div>
+                    <div class="mobile-menu">
+                        <ul class="list-inline">
+                            <li><a href="timline.html" class="active">Timeline</a></li>
+                            <li><a href="timeline-about.html">About</a></li>
+                            <li><a href="timeline-album.html">Album</a></li>
+                            <li><a href="timeline-friends.html">Friends</a></li>
+                        </ul>
+                        <button class="btn-primary">Add Friend</button>
+                    </div>
+                </div><!--Timeline Menu for Small Screens End-->
+
+            </div>
+            <div id="page-contents">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-7">
+                        <!-- Post Create Box
+                        ================================================= -->
+                        @using (Html.BeginForm("Create", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="create-post">
+                                <div class="row">
+                                    <div class="col-md-7 col-sm-7">
+                                        <div class="form-group" style="height:64px">
+                                            @Html.TextAreaFor(model => model.Content, new { @class = "form-control", @placeholder = "Write what you wish", @rows = "1", id = "exampleTextarea", cols = "30" })
+                                            @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 col-sm-5">
+                                        <div class="tools">
+                                            <ul class="publishing-tools list-inline">
+                                                <li>
+                                                    <button type="submit" class="btn btn-primary pull-right">Publish</button>
+                                                    @Html.LabelFor(model => model.UrlImage, htmlAttributes: new { @class = "control-label form-control-sm" })
+                                                    @Html.TextBox("file", "", new { type = "file" })
+                                                    @Html.ValidationMessageFor(model => model.UrlImage, "", new { @class = "text-danger" })
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- Post Create Box End-->
+                        }
+                        @foreach (var item in Model.Posts)
+                        {
+                            <!-- Post Content
+                            ================================================= -->
+                            <div class="post-content">
+                                <!--Post Date-->
+                                <div class="post-date hidden-xs hidden-sm">
+                                    <p class="text-grey">@item.PublishDate.Minute min ago</p>
+                                </div><!--Post Date End-->
+                                @{ string path = "~/Content/uploads/" + @item.UrlImage;}
+                                <img src="@Url.Content(path)" alt="post-image" class="img-responsive post-image" />
+                                <div class="post-container">
+                                    <img src="~/images/image.jpg" alt="user" class="profile-photo-md pull-left" />
+                                    <div class="post-detail">
+                                        <div class="user-info">
+                                            <a href="timeline.html" class="profile-link">@ViewBag.UserName</a>
+                                            <!-- Bootstrap Modal Dialog For update post-->
+                                            @*******************************************************************@
+                                            <button class="btn" style="margin-left:360px" data-target="#UpdateModal_@item.PostId" data-toggle="modal"><i class="fa fa-pencil" style="color:limegreen"></i></button>
+                                            <div class="modal fade" id="UpdateModal_@item.PostId" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
+                                                        <ContentTemplate>
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                    <h4 class="modal-title"><asp:Label ID="lblModalTitle" runat="server" Text=""></asp:Label></h4>
+                                                                    <h2>Update your post...</h2>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <textarea name="texts" id="exampleTextarea" cols="200" rows="2" class="form-control" style="width:1000px">@item.Content</textarea>
+                                                                    <label class="label">Image</label>
+                                                                    @Html.TextBox("file", "", new { type = "file", @class = "input--style-4", style = "width:800px" })
+                                                                    @Html.ValidationMessageFor(model => model.UrlImage, "", new { @class = "text-danger" })
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" class="btn btn-success"> @Html.ActionLink("Update", "Edit", new { id = item.PostId })</button>
+                                                                    <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                                                                </div>
+                                                            </div>
+                                                        </ContentTemplate>
+                                                    </asp:UpdatePanel>
+                                                </div>
+                                            </div>
+                                            @*******************************************************************@
+
+                                            <!-- Bootstrap Modal Dialog For Delete post-->
+                                            @*******************************************************************@
+                                            <button class="btn" data-target="#DeleteModal_@item.PostId" data-toggle="modal"><i class="fa fa-trash" style="color:red"></i></button>
+                                            @*******************************************************************@
+                                            <div class="modal fade" id="DeleteModal_@item.PostId" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
+                                                        <ContentTemplate>
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                    <h4 class="modal-title"><asp:Label ID="lblModalTitle" runat="server" Text=""></asp:Label></h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <asp:Label ID="lblModalBody" runat="server" Text=""></asp:Label>
+                                                                    <h4>Are you sure you want to delete this post ?</h4>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" class="btn btn-danger"> @Html.ActionLink("Confirm", "Delete", new { id = item.PostId })</button>
+                                                                    <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                                                                </div>
+                                                            </div>
+                                                        </ContentTemplate>
+                                                    </asp:UpdatePanel>
+                                                </div>
+                                            </div>
+                                            @*******************************************************************@
+                                            <p class="text-muted">Published @item.PublishDate</p>
+                                        </div>
+                                        <div class="reaction">
+                                        </div>
+                                        <div class="line-divider"></div>
+                                        <div class="post-text">
+                                            <p>@item.Content  <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i></p>
+                                            <button class="btn text-green" type="button" onclick="location.href='@Url.Action("Like", "Post", new { id = item.PostId })'"><i class="glyphicon glyphicon-thumbs-up" style="color:green"></i> @item.Like</button>
+                                            <button class="btn text-green" type="button" onclick="location.href='@Url.Action("DisLike", "Post", new { id = item.PostId })'"><i class="glyphicon glyphicon-thumbs-down" style="color:red"></i> @item.DisLike</button>
+                                        </div>
+                                        <div class="line-divider"></div>
+                                        @foreach (var c in Model.Comments)
+                                        {
+                                            if (item.PostId == c.PostId)
+                                            {
+                                    <div class="post-comment">
+                                        <img src="~/images/user-12.jpg" alt="" class="profile-photo-sm" />
+                                        <p><a href="timeline.html" class="profile-link">John</a><br /> @c.ContentComment </p>
+                                        <!-- Bootstrap Modal Dialog For update comment-->
+                                        @*******************************************************************@
+                                        <div class="modal fade" id="UpdateModalC_@c.CommentId" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
+                                                    <ContentTemplate>
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                <h4 class="modal-title"><asp:Label ID="lblModalTitle" runat="server" Text=""></asp:Label></h4>
+                                                                <h2>Update your comment... @c.CommentId</h2>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <textarea name="texts" id="exampleTextarea" cols="200" rows="2" class="form-control">@c.ContentComment</textarea>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="submit" class="btn btn-success"> @Html.ActionLink("Update", "EditComment", new { id = c.CommentId })</button>
+                                                                <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                                                            </div>
+                                                        </div>
+                                                    </ContentTemplate>
+                                                </asp:UpdatePanel>
+                                            </div>
+                                        </div>
+                                        <!-- Bootstrap Modal Dialog For Delete comemnt-->
+                                        @*******************************************************************@
+                                        <div class="modal fade" id="DeleteModal_@c.CommentId" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
+                                                    <ContentTemplate>
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                <h4 class="modal-title"><asp:Label ID="lblModalTitle" runat="server" Text=""></asp:Label></h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <asp:Label ID="lblModalBody" runat="server" Text=""></asp:Label>
+                                                                <h4>Are you sure you want to delete this comment ? @c.CommentId</h4>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="submit" class="btn btn-danger"> @Html.ActionLink("Confirm", "DeleteComment", new { id = c.CommentId })</button>
+                                                                <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                                                            </div>
+                                                        </div>
+                                                    </ContentTemplate>
+                                                </asp:UpdatePanel>
+                                            </div>
+                                        </div>
+                                        @*******************************************************************@
+                                    </div>
+                                                <div>
+
+                                                </div>
+                                                <script>
+                                                    $(function () {
+                                                        $('[data-toggle="popover"]').popover({
+                                                            html: true,
+                                                            content: function () {
+                                                                return $('#popover-content').html();
+                                                            }
+                                                        })
+                                                    })
+                                                </script>
+                                                <div class="container">
+                                                    <button class="btn text-green" type="button" onclick="location.href='@Url.Action("LikeComment", "Post", new { id = c.CommentId })'"><i class="glyphicon glyphicon-thumbs-up" style="color:green"></i> @c.LikeComment</button>
+                                                    <button class="btn text-green" type="button" onclick="location.href='@Url.Action("DisLikeComment", "Post", new { id = c.CommentId })'"><i class="glyphicon glyphicon-thumbs-down" style="color:red"></i> @c.DislikeComment</button>
+                                                    <button class="btn btn-circle btn-sm" data-toggle="popover" title="Update or Delete this" data-placement="bottom"><strong>...</strong></button>
+                                                    <div id="popover-content" style="display:none;">
+                                                        <ul>
+                                                            <li>
+                                                                <b>
+                                                                    <a data-target="#UpdateModalC_@c.CommentId" data-toggle="modal" class="MainNavText" id="MainNavHelp"
+                                                                       href="#UpdateModal">
+                                                                        <span class="following">Edit</span>
+                                                                    </a>
+                                                                </b>
+                                                            </li>
+                                                            <li>
+                                                                <b>
+                                                                    <a data-target="#DeleteModal_@c.CommentId" data-toggle="modal" class="MainNavText" id="MainNavHel">
+                                                                        <span class="following" style="color:red">Delete</span>
+                                                                    </a>
+                                                                </b>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <p style="margin-left:200px">@Convert.ToDateTime(c.CommentDate).ToString("dddd, dd MMM yyyy")</p>
+                                            }
+                                        }
+                                        @using (Html.BeginForm("CreateComment", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        {
+                                            <div class="post-comment">
+                                                @Html.EditorFor(model => model.ContentComment, new { htmlAttributes = new { @class = "form-control", @placeholder = "Post a comment" } })
+                                                @Html.ValidationMessageFor(model => model.ContentComment, "", new { @class = "text-danger" })
+                                                @Html.EditorFor(model => model.PostId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Post a comment" } })
+                                            </div>
+                                            <button type="submit" class="badge badge-light" style="margin-left:240px">Post</button>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--preloader-->
+    <div id="spinner-wrapper">
+        <div class="spinner"></div>
+    </div>
+</body>
+</html>

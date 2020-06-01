@@ -1,0 +1,88 @@
+﻿@model IEnumerable<ConsomiTounsi.domain.Entities.Contact>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutBack.cshtml";
+}
+<div class="card-body">
+    <br /><br /><br /><br />
+    <div class="form-group">
+        <h3 style="color:cadetblue">Contacts List</h3> <input type="text" class="form-control" placeholder="Search users" style="width:210px;margin-left:1050px">
+    </div>
+    <div></div>
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.UserName)</th>
+                    <th>@Html.DisplayNameFor(model => model.UserEmail)</th>
+                    <th>@Html.DisplayNameFor(model => model.UserPhone)</th>
+                    <th>@Html.DisplayNameFor(model => model.ContactDate)</th>
+                    <th>@Html.DisplayNameFor(model => model.ContactContent)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserEmail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserPhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactContent)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IdContact }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.IdContact }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.IdContact })
+                        </td>
+                    </tr>
+                }
+        </table>
+    </div>
+</div>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
+
+
+@*<script>
+    //fonction recherche par nom ajax
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("dataTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    </script>*@

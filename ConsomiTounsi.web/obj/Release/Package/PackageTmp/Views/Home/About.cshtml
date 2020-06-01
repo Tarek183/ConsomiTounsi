@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="This is social network html5 template available in themeforest......" />
+    <meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
+    <meta name="robots" content="index, follow" />
+    <title>About Me | Learn Detail About Me</title>
+
+    <!--Google Webfont-->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600,600italic,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">*@
+
+    <!--Favicon-->
+    <link rel="shortcut icon" type="image/png" href="images/fav.png" />
+</head>
+<body>
+    <div class="container">
+
+        <!-- Timeline
+        ================================================= -->
+        <div class="timeline">
+            <div class="timeline-cover">
+
+                <!--Timeline Menu for Large Screens-->
+                <div class="timeline-nav-bar hidden-sm hidden-xs">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="profile-info">
+                                <img src="~/images/user-12.jpg" alt="" class="img-responsive profile-photo" />
+                                <h3>@ViewBag.UserName</h3>
+                                <p class="text-muted">@ViewBag.Role</p>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <ul class="list-inline profile-menu">
+                                <li>@Html.ActionLink("Chat", "Index", "Post")</li>
+                                <li>@Html.ActionLink("About", "About", "Home")</li>
+                                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!--Timeline Menu for Large Screens End-->
+                <!--Timeline Menu for Small Screens-->
+                <div class="navbar-mobile hidden-lg hidden-md">
+                    <div class="profile-info">
+                        <img src="images/users/user-1.jpg" alt="" class="img-responsive profile-photo" />
+                        <h4>Sarah Cruiz</h4>
+                        <p class="text-muted">@ViewBag.Role</p>
+                    </div>
+                    <div class="mobile-menu">
+                        <ul class="list-inline">
+                            <li><a href="timline.html">Timeline</a></li>
+                            <li><a href="timeline-about.html" class="active">About</a></li>
+                            <li><a href="timeline-album.html">Album</a></li>
+                            <li><a href="timeline-friends.html">Friends</a></li>
+                        </ul>
+                        <button class="btn-primary">Add Friend</button>
+                    </div>
+                </div><!--Timeline Menu for Small Screens End-->
+
+            </div>
+            <div id="page-contents">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-7">
+
+                        <!-- About
+        ================================================= -->
+                        <div class="about-profile">
+                            <div class="about-content-block">
+                                <h4 class="grey"><i class="fas fa-info"></i> Personal Information</h4>
+                            </div>
+                            <div class="about-content-block">
+                                <div class="organization">
+                                    <img src="images/envato.png" alt="" class="pull-left img-org" />
+                                    <div class="work-info">
+                                         <h5><i class="fas fa-user"></i>  Username</h5>
+                                         <p><span class="text-grey">@ViewBag.Username</span></p>
+                                    </div>
+                                </div>
+                                <div class="organization">
+                                    <img src="images/envato.png" alt="" class="pull-left img-org" />
+                                    <div class="work-info">
+                                        <h5><i class="fas fa-mail-bulk"></i>  Email</h5>
+                                        <p><span class="text-grey">@ViewBag.Email</span></p>
+                                    </div>
+                                </div>
+                                <div class="organization">
+                                    <img src="images/envato.png" alt="" class="pull-left img-org" />
+                                    <div class="work-info">
+                                        <h5><i class="fas fa-phone"></i> Number Phone</h5>
+                                        <p><span class="text-grey">@ViewBag.phone</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="about-content-block">
+                                <h4 class="grey"> <i class="fas fa-search-location"></i> Location</h4>
+                                <p>Cite El-Ghazala</p>
+                                <div class="google-maps">
+                                    <div id="map" class="map"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 static">
+                        <div id="sticky-sidebar">
+                            <input type="button" class="btn-primary" value="Update account" onclick="location.href='@Url.Action("UpdateAbout", "Home")'" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--preloader-->
+    <div id="spinner-wrapper">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Scripts
+    ================================================= -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOiLRLzx9Jd2ivpqH_VOMDzzXnI2O-WmA=initMap"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky-kit.min.js"></script>
+    <script src="js/jquery.scrollbar.min.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>

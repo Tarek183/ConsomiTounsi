@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="Machaine-Web.config Connection String" description="Machaine Connection String used in web.config by the application to access the database." defaultValue="Data Source=(localdb)\MSSQLLocalDB;            &#xD;&#xA;         Initial Catalog=ConsomiTounsi;                       &#xD;&#xA;         Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\lenovo\\Desktop\\ConsomiTounsi\\ConsomiTounsi\.web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Machaine']/@connectionString" />
+  </parameter>
+</parameters>
