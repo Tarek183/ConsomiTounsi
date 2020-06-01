@@ -12,7 +12,9 @@
     ================================================= -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+    
+    <link href="~/CSS/BtnInsideInput.css" rel="stylesheet" />
+   
     <script src="~/Scripts/rating/jquery.min.js"></script>
     <script src="~/Scripts/rating/star-rating.js"></script>
     <link href="~/CSS/rating/star-rating.css" rel="stylesheet" type="text/css" />
@@ -287,12 +289,17 @@
                                     }
                                     @using (Html.BeginForm("CreateCommentC", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
                                     {
-                                <div class="post-comment">
-                                    @Html.EditorFor(model => model.ContentComment, new { htmlAttributes = new { @class = "form-control", @placeholder = "Post a comment" } })
-                                    @Html.ValidationMessageFor(model => model.ContentComment, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.PostId, new { htmlAttributes = new { @class = "form-control" ,@style="width:50px", @placeholder = "Post a comment" } })                                   
-                                </div>
-                                        <button type="submit" class="badge badge-light" style="margin-left:240px">Post</button>
+                                        <div id="containerC">
+                                            <div id="helpC"></div>
+                                            <div class="buttonInside">
+                                                @Html.EditorFor(model => model.ContentComment, new { htmlAttributes = new { @class = "form-control", @placeholder = "Post a comment" } })
+                                                @Html.ValidationMessageFor(model => model.ContentComment, "", new { @class = "text-danger" })
+                                                <button type="submit" style=" position: absolute; right: 21px; top: 2px; border: none; 
+                                                                      height: 31px; width: 35px; border-radius: 10%; outline: none;
+                                                                      text-align: center; font-weight: bold; padding: 2px;" id="buttonc">Post</button>
+                                                @Html.EditorFor(model => model.PostId, new { htmlAttributes = new { @class = "form-control", @style = "width:50px" } })
+                                            </div>
+                                        </div>
                                     }
                                 </div>
                             </div>

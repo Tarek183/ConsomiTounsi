@@ -1,0 +1,41 @@
+﻿.buttonInside {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+#containerC {
+    width: 300px;
+}
+
+input {
+    height: 25px;
+    width: 100%;
+    padding-left: 10px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+}
+
+.buttonc {
+    position: absolute;
+    right: 21px;
+    top: 2px;
+    border: none;
+    height: 31px;
+    width: 35px;
+    border-radius: 10%;
+    outline: none;
+    text-align: center;
+    font-weight: bold;
+    padding: 2px;
+}
+
+    button:hover {
+        cursor: pointer;
+    }
+
+#helpC {
+    display: none;
+    font-style: italic;
+    font-size: 0.8em;
+}

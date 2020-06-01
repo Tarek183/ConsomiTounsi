@@ -11,7 +11,7 @@
     <link href="~/CSS/rating/font.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+    <link href="~/CSS/BtnInsideInput.css" rel="stylesheet" />
     <script src="~/Scripts/rating/jquery.min.js"></script>
     <script src="~/Scripts/rating/star-rating.js"></script>
     <link href="~/CSS/rating/star-rating.css" rel="stylesheet" type="text/css" />
@@ -186,59 +186,59 @@
                                         {
                                             if (item.PostId == c.PostId)
                                             {
-                                    <div class="post-comment">
-                                        <img src="~/images/user-12.jpg" alt="" class="profile-photo-sm" />
-                                        <p><a href="timeline.html" class="profile-link">John</a><br /> @c.ContentComment </p>
-                                        <!-- Bootstrap Modal Dialog For update comment-->
-                                        @*******************************************************************@
-                                        <div class="modal fade" id="UpdateModalC_@c.CommentId" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
-                                                    <ContentTemplate>
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                                <h4 class="modal-title"><asp:Label ID="lblModalTitle" runat="server" Text=""></asp:Label></h4>
-                                                                <h2>Update your comment... @c.CommentId</h2>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <textarea name="texts" id="exampleTextarea" cols="200" rows="2" class="form-control">@c.ContentComment</textarea>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="submit" class="btn btn-success"> @Html.ActionLink("Update", "EditComment", new { id = c.CommentId })</button>
-                                                                <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                                                            </div>
+                                                <div class="post-comment">
+                                                    <img src="~/images/user-12.jpg" alt="" class="profile-photo-sm" />
+                                                    <p><a href="timeline.html" class="profile-link">John</a><br /> @c.ContentComment </p>
+                                                    <!-- Bootstrap Modal Dialog For update comment-->
+                                                    @*******************************************************************@
+                                                    <div class="modal fade" id="UpdateModalC_@c.CommentId" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
+                                                                <ContentTemplate>
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                            <h4 class="modal-title"><asp:Label ID="lblModalTitle" runat="server" Text=""></asp:Label></h4>
+                                                                            <h2>Update your comment... @c.CommentId</h2>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <textarea name="texts" id="exampleTextarea" cols="200" rows="2" class="form-control">@c.ContentComment</textarea>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="submit" class="btn btn-success"> @Html.ActionLink("Update", "EditComment", new { id = c.CommentId })</button>
+                                                                            <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </ContentTemplate>
+                                                            </asp:UpdatePanel>
                                                         </div>
-                                                    </ContentTemplate>
-                                                </asp:UpdatePanel>
-                                            </div>
-                                        </div>
-                                        <!-- Bootstrap Modal Dialog For Delete comemnt-->
-                                        @*******************************************************************@
-                                        <div class="modal fade" id="DeleteModal_@c.CommentId" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
-                                                    <ContentTemplate>
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                                <h4 class="modal-title"><asp:Label ID="lblModalTitle" runat="server" Text=""></asp:Label></h4>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <asp:Label ID="lblModalBody" runat="server" Text=""></asp:Label>
-                                                                <h4>Are you sure you want to delete this comment ? @c.CommentId</h4>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="submit" class="btn btn-danger"> @Html.ActionLink("Confirm", "DeleteComment", new { id = c.CommentId })</button>
-                                                                <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                                                            </div>
+                                                    </div>
+                                                    <!-- Bootstrap Modal Dialog For Delete comemnt-->
+                                                    @*******************************************************************@
+                                                    <div class="modal fade" id="DeleteModal_@c.CommentId" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
+                                                                <ContentTemplate>
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                            <h4 class="modal-title"><asp:Label ID="lblModalTitle" runat="server" Text=""></asp:Label></h4>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <asp:Label ID="lblModalBody" runat="server" Text=""></asp:Label>
+                                                                            <h4>Are you sure you want to delete this comment ? @c.CommentId</h4>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="submit" class="btn btn-danger"> @Html.ActionLink("Confirm", "DeleteComment", new { id = c.CommentId })</button>
+                                                                            <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </ContentTemplate>
+                                                            </asp:UpdatePanel>
                                                         </div>
-                                                    </ContentTemplate>
-                                                </asp:UpdatePanel>
-                                            </div>
-                                        </div>
-                                        @*******************************************************************@
-                                    </div>
+                                                    </div>
+                                                    @*******************************************************************@
+                                                </div>
                                                 <div>
 
                                                 </div>
@@ -281,12 +281,19 @@
                                         }
                                         @using (Html.BeginForm("CreateComment", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
                                         {
-                                            <div class="post-comment">
-                                                @Html.EditorFor(model => model.ContentComment, new { htmlAttributes = new { @class = "form-control", @placeholder = "Post a comment" } })
-                                                @Html.ValidationMessageFor(model => model.ContentComment, "", new { @class = "text-danger" })
-                                                @Html.EditorFor(model => model.PostId, new { htmlAttributes = new { @class = "form-control", @style="width:50px", @placeholder = "Post a comment" } })
+                                            <div id="containerC">
+                                                <div id="helpC"></div>
+                                                <div class="buttonInside">
+                                                    @Html.EditorFor(model => model.ContentComment, new { htmlAttributes = new { @class = "form-control", @placeholder = "Post a comment" } })
+                                                    @Html.ValidationMessageFor(model => model.ContentComment, "", new { @class = "text-danger" })
+                                                    <button type="submit" style=" position: absolute; right: 21px; top: 2px; border: none;
+                                                                      height: 31px; width: 35px; border-radius: 10%; outline: none;
+                                                                      text-align: center; font-weight: bold; padding: 2px;" id="buttonc">
+                                                        Post
+                                                    </button>
+                                                    @Html.EditorFor(model => model.PostId, new { htmlAttributes = new { @class = "form-control", @style = "width:50px" } })
+                                                </div>
                                             </div>
-                                            <button type="submit" class="badge badge-light" style="margin-left:240px">Post</button>
                                         }
                                     </div>
                                 </div>

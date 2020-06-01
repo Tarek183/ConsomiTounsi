@@ -1814,6 +1814,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="CSS\bootstrap.min.css" />
+    <Content Include="CSS\BtnInsideInput.css" />
     <Content Include="CSS\font-awesome.min.css" />
     <Content Include="CSS\formUser\font-awesome.min.css" />
     <Content Include="CSS\formUser\main.css" />

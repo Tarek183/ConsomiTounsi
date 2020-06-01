@@ -13,19 +13,19 @@ namespace ConsomiTounsi.web.Controllers
 {
     public class PostApiController : ApiController
     {
-        IPostService PS;
+        IPostService PostServ;
         //private AnnonceService ms = new AnnonceService();
         List<PostModel> result = new List<PostModel>();
         public PostApiController()
         {
-            PS = new PostService();
+            PostServ = new PostService();
             Index();
             result = Index().ToList();
         }
 
         public List<PostModel> Index()
         {
-            IEnumerable<Post> Posts = PS.GetMany();
+            IEnumerable<Post> Posts = PostServ.GetMany();
             List<PostModel> PostsXml = new List<PostModel>();
             foreach (Post p in Posts)
             {
@@ -52,7 +52,7 @@ namespace ConsomiTounsi.web.Controllers
         // GET api/PostApi/5
         public Post Get(int id)
         {
-            Post post = PS.GetById(id);
+            Post post = PostServ.GetById(id);
             return post;
         }
 
@@ -60,8 +60,8 @@ namespace ConsomiTounsi.web.Controllers
         [HttpPost]
         public Post Post(Post post)
         {
-            PS.Add(post);
-            PS.Commit();
+            PostServ.Add(post);
+            PostServ.Commit();
             return post;
         }
 
@@ -105,9 +105,9 @@ namespace ConsomiTounsi.web.Controllers
         // DELETE: api/<controller>/5
         public IHttpActionResult Delete(int id)
         {
-            Post post = PS.GetById(id);
-            PS.Delete(post);
-            PS.Commit();
+            Post post = PostServ.GetById(id);
+            PostServ.Delete(post);
+            PostServ.Commit();
             return Ok(post);
         }
     }
