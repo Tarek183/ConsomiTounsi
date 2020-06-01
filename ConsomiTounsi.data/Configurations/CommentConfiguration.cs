@@ -12,10 +12,10 @@ namespace ConsomiTounsi.data.Configurations
     {
         public CommentConfiguration()
         {
-            //HasOptional(Com => Com.Post)
-            //   .WithMany(post => post.ListComments)
-            //   .HasForeignKey(Com => Com.PostId)
-            //   .WillCascadeOnDelete(true);
+            HasOptional(Com => Com.Post)
+               .WithMany(post => post.ListComments)
+               .HasForeignKey(Com => Com.PostId)
+               .WillCascadeOnDelete(true);
         }
     }
 }

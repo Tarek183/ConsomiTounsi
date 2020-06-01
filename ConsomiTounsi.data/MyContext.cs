@@ -31,7 +31,6 @@ namespace ConsomiTounsi.data
             modelBuilder.Configurations.Add(new IdentityUserLoginConfiguration());
             modelBuilder.Configurations.Add(new IdentityUserRoleConfiguration());
             modelBuilder.Configurations.Add(new CommentConfiguration());
-            modelBuilder.Configurations.Add(new PostConfiguration());
         }
     }
 }
