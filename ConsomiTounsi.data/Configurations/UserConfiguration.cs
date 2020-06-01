@@ -13,7 +13,6 @@ namespace ConsomiTounsi.data.Configurations
         public UserConfiguration()
         {
             HasMany(u => u.Posts).WithRequired(k => k.User).HasForeignKey(p => p.UserId).WillCascadeOnDelete(true);
-            HasMany(u => u.Comments).WithRequired(k => k.User).HasForeignKey(p => p.UserId).WillCascadeOnDelete(true);
         }
     }
 }
