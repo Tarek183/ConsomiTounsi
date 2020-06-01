@@ -290,7 +290,7 @@
                                 <div class="post-comment">
                                     @Html.EditorFor(model => model.ContentComment, new { htmlAttributes = new { @class = "form-control", @placeholder = "Post a comment" } })
                                     @Html.ValidationMessageFor(model => model.ContentComment, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.PostId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Post a comment" } })                                   
+                                    @Html.EditorFor(model => model.PostId, new { htmlAttributes = new { @class = "form-control" ,@style="width:50px", @placeholder = "Post a comment" } })                                   
                                 </div>
                                         <button type="submit" class="badge badge-light" style="margin-left:240px">Post</button>
                                     }
