@@ -105,7 +105,7 @@
                             <div class="post-content">
                                 <!--Post Date-->
                                 <div class="post-date hidden-xs hidden-sm">
-                                    <p class="text-grey">@item.PublishDate.Minute min ago</p>
+                                    <p class="text-grey">@item.PublishDate.Minute min ago </p>
                                 </div><!--Post Date End-->
                                 @{ string path = "~/Content/uploads/" + @item.UrlImage;}
                                 <img src="@Url.Content(path)" alt="post-image" class="img-responsive post-image" />
@@ -116,7 +116,7 @@
                                             <a href="timeline.html" class="profile-link">@ViewBag.UserName</a>
                                             <!-- Bootstrap Modal Dialog For update post-->
                                             @*******************************************************************@
-                                            <button class="btn" style="margin-left:360px" data-target="#UpdateModal_@item.PostId" data-toggle="modal"><i class="fa fa-pencil" style="color:limegreen"></i></button>
+                                            <button class="btn" style="margin-left:360px" data-target="#UpdateModal_@item.PostId" data-toggle="modal"><i class="fa fa-pencil" style="color:limegreen"></i></button> 
                                             <div class="modal fade" id="UpdateModal_@item.PostId" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
@@ -284,6 +284,7 @@
                                             <div id="containerC">
                                                 <div id="helpC"></div>
                                                 <div class="buttonInside">
+                                                    @Html.HiddenFor(model=>model.PostId ,new { Value=@item.PostId})
                                                     @Html.EditorFor(model => model.ContentComment, new { htmlAttributes = new { @class = "form-control", @placeholder = "Post a comment" } })
                                                     @Html.ValidationMessageFor(model => model.ContentComment, "", new { @class = "text-danger" })
                                                     <button type="submit" style=" position: absolute; right: 21px; top: 2px; border: none;
@@ -291,10 +292,10 @@
                                                                       text-align: center; font-weight: bold; padding: 2px;" id="buttonc">
                                                         Post
                                                     </button>
-                                                    @Html.EditorFor(model => model.PostId, new { htmlAttributes = new { @class = "form-control", @style = "width:50px" } })
                                                 </div>
                                             </div>
                                         }
+                                        
                                     </div>
                                 </div>
                             </div>

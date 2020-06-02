@@ -51,6 +51,7 @@ namespace ConsomiTounsi.web.Controllers
             mymodel.Posts = ctx.Posts.ToList();
             mymodel.Comments = ctx.Comments.ToList();
 
+
             return View(mymodel);
         }
 
@@ -110,6 +111,8 @@ namespace ConsomiTounsi.web.Controllers
             PS.Commit();
                 return RedirectToAction("Index");
         }
+
+
 
         //// GET: Post/Edit/5
         public ActionResult Edit(int id)
