@@ -87,7 +87,7 @@ namespace ConsomiTounsi.web.Controllers
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             User user = await UserManager.FindAsync(model.UserName, model.Password);
-
+            string image = user.image;
             switch (result)
             {
                 case SignInStatus.Success:
@@ -190,7 +190,17 @@ namespace ConsomiTounsi.web.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        var token = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, protocol: Request.Url.Scheme);
+                        UserManager.EmailService = new EmailServicec();
+                        await UserManager.SendEmailAsync(user.Id,
+                            "Confirm your account",
+                                "Please confirm your account by clicking this link: <a href=\""
+                                                  + confirmationLink + "\">link</a>");
+
+
+                           return RedirectToAction("SignalConfMail", "Account");
+
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -216,35 +226,6 @@ namespace ConsomiTounsi.web.Controllers
             Image.SaveAs(path);
             // If we got this far, something failed, redisplay form
 
-            var verifyurl = "/Signup/VerifiyAccount/";
-            var link = Request.Url.AbsolutePath.Replace(Request.Url.PathAndQuery, verifyurl);
-
-            var fromEmail = new MailAddress("tarek.bettaieb@esprit.tn", "Tarek BETTAIEB");
-            var toEmail = new MailAddress("bettaiebtarek10@gmail.com");
-            var FromEmailPassword = "183JMT1268";
-
-            string subject = "New Account registration";
-
-            string body = "Dear Client Thank you for registering to Consomi Tounsi. Your registration has been received.If you would like to view your registration details, you can login at the following link: https://localhost:44382/Account/Login" +
-                "<br/><a href = '" + link + "'>" + link + "</a>";
-
-            var smtp = new SmtpClient
-            {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromEmail.Address, FromEmailPassword),
-                Timeout = 20000
-            };
-            using (var message = new MailMessage(fromEmail, toEmail)
-            {
-                Subject = subject,
-                Body = body,
-                IsBodyHtml = true
-
-            }) smtp.Send(message);
             return View(model);
         }
             catch
@@ -252,19 +233,23 @@ namespace ConsomiTounsi.web.Controllers
                 return View();
             }
         }
-
+        public ActionResult SignalConfMail()
+        {
+            return View();
+        }
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
-        public async Task<ActionResult> ConfirmEmail(string userId, string code)
+        public async Task<ActionResult> ConfirmEmail(string userId, string token)
         {
-            if (userId == null || code == null)
+            if (userId == null || token == null)
             {
                 return View("Error");
             }
-            var result = await UserManager.ConfirmEmailAsync(userId, code);
+            var result = await UserManager.ConfirmEmailAsync(userId, token);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
+        
 
         //
         // GET: /Account/ForgotPassword

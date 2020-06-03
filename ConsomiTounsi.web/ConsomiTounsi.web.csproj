@@ -186,6 +186,7 @@
     <Compile Include="Controllers\BackController.cs" />
     <Compile Include="Controllers\CommentApiController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\EmailService.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostApiController.cs" />
@@ -2073,6 +2074,7 @@
     <Content Include="Views\Home\UpdateAbout.cshtml" />
     <Content Include="Views\Post\EditComment.cshtml" />
     <Content Include="Views\Post\Edit.cshtml" />
+    <Content Include="Views\Account\SignalConfMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

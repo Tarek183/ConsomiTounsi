@@ -73,12 +73,15 @@ namespace ConsomiTounsi.web.Controllers
 
             if (!val1)
                 return View();
-            var userId = User.Identity.GetUserId();
-            string UserName = US.GetById(userId).UserName;
-            string Phone = US.GetById(userId).Phone;
-            string mail = US.GetById(userId).Email;
-            string role = US.GetById(userId).Role;
 
+            var userId = User.Identity.GetUserId();
+            var user = US.GetById(userId);
+
+            string UserName = user.UserName;
+            string Phone = user.Phone;
+            string mail = user.Email;
+            string role = user.Role;
+            string image = user.image;
             ViewBag.Email = mail;
             ViewBag.phone = Phone;
             ViewBag.UserName = UserName;
@@ -86,6 +89,7 @@ namespace ConsomiTounsi.web.Controllers
             ViewBag.authenticated = val1;
 
             var mymodel = new PostComment();
+            mymodel.User = user;
             mymodel.Posts = ctx.Posts.ToList();
             mymodel.Comments = ctx.Comments.ToList();
             return View(mymodel);

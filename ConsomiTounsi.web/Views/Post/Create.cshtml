@@ -33,7 +33,7 @@
                 ================================================= -->
                 <div class="col-md-3 static">
                     <div class="profile-card">
-                        <img src="~/images/image.jpg" alt="" class="profile-photo-md" />
+                        <img src="@Url.Content("~/Content/Uploads/"+@Model.User.image)" alt="" class="profile-photo-md" />
                         <h5><a href="timeline.html" class="text-white">@ViewBag.Username</a></h5>
                         <a href="#" class="text-white">@ViewBag.Role</a>
                     </div><!--profile card ends-->
@@ -247,7 +247,7 @@
                                                 </div>
                                             </div>
                                             @*******************************************************************@
-                                        </div>
+                    </div>
                     
                                             <script>
                                                 $('body').on('click', function (e) {
