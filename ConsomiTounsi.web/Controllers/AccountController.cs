@@ -190,33 +190,35 @@ namespace ConsomiTounsi.web.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                        var token = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                        var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, protocol: Request.Url.Scheme);
-                        UserManager.EmailService = new EmailServicec();
-                        await UserManager.SendEmailAsync(user.Id,
-                            "Confirm your account",
-                                "Please confirm your account by clicking this link: <a href=\""
-                                                  + confirmationLink + "\">link</a>");
+                        //var token = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        //var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, protocol: Request.Url.Scheme);
+                        //UserManager.EmailService = new EmailServicec();
+                        //await UserManager.SendEmailAsync(user.Id,
+                        //    "Confirm your account",
+                        //        "Please confirm your account by clicking this link: <a href=\""
+                        //                          + confirmationLink + "\">link</a>");
+
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
 
-                           return RedirectToAction("SignalConfMail", "Account");
+                        //return RedirectToAction("SignalConfMail", "Account");
 
 
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
 
-                    //Assign Role to user Here  
-                    //await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);    
-                    //await this.UserManager.AddToRoleAsync(user.Id, model.Roles.ToString());
-                    //Ends Here 
-                    var path2 = Path.Combine(Server.MapPath("~/Content/Uploads"), Image.FileName);
+                        //Assign Role to user Here  
+                        //await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);    
+                        //await this.UserManager.AddToRoleAsync(user.Id, model.Roles.ToString());
+                        //Ends Here 
+                        var path2 = Path.Combine(Server.MapPath("~/Content/Uploads"), Image.FileName);
                     Image.SaveAs(path2);
 
-                    return RedirectToAction("Login", "Account");
+                    return RedirectToAction("Create", "Post");
                     //return RedirectToAction("Index", "Home");
                 }
                     ViewBag.Name = new SelectList(ctx.Roles.ToList());

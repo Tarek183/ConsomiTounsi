@@ -27,7 +27,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="profile-info">
-                                <img src="~/images/image.jpg" alt="" class="img-responsive profile-photo" />
+                                <img src="@Url.Content("~/Content/Uploads/"+@Model.User.image)" alt="" class="img-responsive profile-photo" />
                                 <h3>@ViewBag.UserName</h3>
                                 <p class="text-muted">@ViewBag.Role</p>
                             </div>
@@ -35,25 +35,28 @@
                         <div class="col-md-9">
                             <ul class="list-inline profile-menu">
                                 <li>
-                                    <a href="~/Views/Post/AddProduct.cshtml" class="active">
                                         @Html.ActionLink("Chat", "Index", "Post")
-                                    </a>
                                 </li>
-                                <li>@Html.ActionLink("About", "About", "Home")</li>
-                                <li>@Html.ActionLink("Contact", "CreateContact", "Home")</li>
+                                <li>
+                                        @Html.ActionLink("About", "About", "Home")
+                                </li>
+                                <li>
+                                        @Html.ActionLink("Contact", "CreateContact", "Home")
+                                </li>
                             </ul>
-                            <!-- <ul class="follow-me list-inline">
+                             <ul class="follow-me list-inline">
                               <li>1,299 people following her</li>
                               <li><button class="btn-primary">Add Friend</button></li>
-                            </ul> -->
+                            </ul> 
                         </div>
                     </div>
                 </div><!--Timeline Menu for Large Screens End-->
                 <!--Timeline Menu for Small Screens-->
                 <div class="navbar-mobile hidden-lg hidden-md">
                     <div class="profile-info">
-                        <img src="~/images/user.jpg" alt="" class="img-responsive profile-photo" />
-                    <p class="text-muted">@ViewBag.Role</p>
+                        <img src="@Url.Content("~/Content/Uploads/"+@Model.User.image)" alt="" class="img-responsive profile-photo" />
+                        @*<img src="~/images/user.jpg" alt="" class="img-responsive profile-photo" />*@
+                        <p class="text-muted">@ViewBag.Role</p>
                     </div>
                     <div class="mobile-menu">
                         <ul class="list-inline">

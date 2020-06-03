@@ -1828,6 +1828,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\bb.jpg" />
     <Content Include="images\bg.jpg" />
     <Content Include="images\down-arrow.png" />
     <Content Include="images\image.jpg" />
@@ -2009,7 +2010,7 @@
     <Content Include="ContentAdmin\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="ContentAdmin\vendor\jquery\jquery.min.map" />
     <Content Include="ContentAdmin\vendor\jquery\jquery.slim.min.map" />
-    <None Include="Properties\PublishProfiles\ConsomiTounsiwebversion2 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\ConsomiTounsiTarek - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

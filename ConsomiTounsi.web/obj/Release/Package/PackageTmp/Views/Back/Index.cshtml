@@ -1,56 +1,57 @@
 ﻿@model IEnumerable<ConsomiTounsi.domain.Entities.User>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutBack.cshtml";
 }
-    <div class="card-body">
-        <br /><br /><br /><br />
-        <div class="form-group">    
-         <h3 style="color:cadetblue">Users List</h3> <input type="text" class="form-control" placeholder="Search users" style="width:210px;margin-left:1050px">
-        </div>
-        <div></div>
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>@Html.DisplayNameFor(model => model.UserName)</th>
-                        <th>@Html.DisplayNameFor(model => model.Email)</th>
-                        <th>@Html.DisplayNameFor(model => model.Phone)</th>
-                        <th>@Html.DisplayNameFor(model => model.image)</th>
-                        <th>@Html.DisplayNameFor(model => model.Role)</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UserName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Email)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Phone)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.image)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Role)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                            </td>
-                        </tr>
-                    }
-            </table>
-        </div>
-    </div>
+<div class="card-body">
+    <br /><br /><br /><br />
+                      <div class="form-group">
+                          <h3 style="color:cadetblue">Users List</h3> <input type="text" class="form-control" placeholder="Search users" id="myInput" onkeyup="myFunction()" style="width:200px;margin-left:1000px"> 
+                          @*<i class="fa fa-search"></i>*@
+                      </div>
+                      <div class="table-responsive">
+                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                              <thead>
+                                  <tr>
+                                      <th>@Html.DisplayNameFor(model => model.UserName)</th>
+                                      <th>@Html.DisplayNameFor(model => model.Email)</th>
+                                      <th>@Html.DisplayNameFor(model => model.Phone)</th>
+                                      <th>@Html.DisplayNameFor(model => model.image)</th>
+                                      <th>@Html.DisplayNameFor(model => model.Role)</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  @foreach (var item in Model)
+                                  {
+                                      <tr>
+                                          <td>
+                                              @Html.DisplayFor(modelItem => item.UserName)
+                                          </td>
+                                          <td>
+                                              @Html.DisplayFor(modelItem => item.Email)
+                                          </td>
+                                          <td>
+                                              @Html.DisplayFor(modelItem => item.Phone)
+                                          </td>
+                                          <td>
+                                              @Html.DisplayFor(modelItem => item.image)
+                                          </td>
+                                          <td>
+                                              @Html.DisplayFor(modelItem => item.Role)
+                                          </td>
+                                          <td>
+                                              @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                              @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                              @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                          </td>
+                                      </tr>
+                                  }
+                          </table>
+                      </div>
+</div>
 
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -65,7 +66,7 @@
 <script src="js/demo/datatables-demo.js"></script>
 
 
-@*<script>
+<script>
     //fonction recherche par nom ajax
     function myFunction() {
         var input, filter, table, tr, td, i, txtValue;
@@ -85,4 +86,4 @@
             }
         }
     }
-    </script>*@
+    </script>

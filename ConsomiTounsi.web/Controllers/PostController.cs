@@ -34,20 +34,22 @@ namespace ConsomiTounsi.web.Controllers
             if (!val1)
                 return View();
             var userId = User.Identity.GetUserId();
-            string UserName = US.GetById(userId).UserName;
-            string Phone = US.GetById(userId).Phone;
-            string mail = US.GetById(userId).Email;
-            string image = US.GetById(userId).image;
-            string role = US.GetById(userId).Role;
+            var user = US.GetById(userId);
+            string UserName = user.UserName;
+            string Phone = user.Phone;
+            string mail = user.Email;
+            string image = user.image;
+            string role = user.Role;
 
             ViewBag.Email = mail;
             ViewBag.phone = Phone;
             ViewBag.UserName = UserName;
-            ViewBag.image = image;
+
             ViewBag.Role = role;
             ViewBag.authenticated = val1;
             
             var mymodel = new PostComment();
+            mymodel.User = user;
             mymodel.Posts = ctx.Posts.ToList();
             mymodel.Comments = ctx.Comments.ToList();
 

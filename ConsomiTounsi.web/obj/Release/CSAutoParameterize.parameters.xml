@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="Machaine-Web.config Connection String" description="Machaine Connection String used in web.config by the application to access the database." defaultValue="Data Source=(localdb)\MSSQLLocalDB;            &#xD;&#xA;         Initial Catalog=ConsomiTounsi;                       &#xD;&#xA;         Integrated Security=True" tags="SqlConnectionString">
+  <parameter name="Machaine-Web.config Connection String" description="Machaine Connection String used in web.config by the application to access the database." defaultValue="Data Source=(localdb)\MSSQLLocalDB;           &#xD;&#xA;         &#xD;&#xA;       &#xD;&#xA;         Initial Catalog=ConsomiTounsi;                 &#xD;&#xA;         &#xD;&#xA;      &#xD;&#xA;         Integrated Security=True" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\lenovo\\Desktop\\ConsomiTounsi\\ConsomiTounsi\.web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Machaine']/@connectionString" />
+  </parameter>
+  <parameter name="consomiTounsiadb-Web.config Connection String" description="consomiTounsiadb Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:tarekserveur.database.windows.net,1433;Initial Catalog=ConsomiTounsiweb20200603012356_db;Persist Security Info=False;User ID=tarek;Password=abcABC123.;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\lenovo\\Desktop\\ConsomiTounsi\\ConsomiTounsi\.web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='consomiTounsiadb']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="DefaultConnection_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\lenovo\\Desktop\\ConsomiTounsi\\ConsomiTounsi\.web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="consomiTounsiadb_DatabasePublish-Web.config Connection String" description="consomiTounsiadb_DatabasePublish Connection String used in web.config by the application to access the database." defaultValue="consomiTounsiadb_DatabasePublish.ConnetionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\lenovo\\Desktop\\ConsomiTounsi\\ConsomiTounsi\.web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='consomiTounsiadb_DatabasePublish']/@connectionString" />
   </parameter>
 </parameters>
