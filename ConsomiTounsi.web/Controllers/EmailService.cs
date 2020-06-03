@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
-using Microsoft.AspNet.Identity;
+using System.Threading.Tasks;
 
 namespace ConsomiTounsi.web.Controllers
 {
-    public class EmailServicec : IIdentityMessageService
+    public class EmailService : IIdentityMessageService
     {
         public Task SendAsync(IdentityMessage message)
         {
@@ -40,23 +40,5 @@ namespace ConsomiTounsi.web.Controllers
             // Send:
             return client.SendMailAsync(mail);
         }
-
-        //public ActionResult SendMail()
-        //{
-        //    var message = new MimeMessage();
-        //    message.From.Add(new MailboxAddress("ConsomiTounsi", "mouhamedsaid.raoudh@esprit.tn"));
-        //    message.To.Add(new MailboxAddress("said", "email"));
-        //    message.Subject = "just a subjust";
-        //    message.Body = new TextPart("plain")
-        //    {
-        //        Text = "Iam using mailkit nuget"
-        //};
-        //using (var client=new SmtpClient()){
-        //        client.Connect("smtp.gmail.com",587,false);
-        //        client.Authenticate("mouhamedsaid.raoudh@esprit.tn", "Bb123456");
-        //        client.Send(message);
-        //        client.Disconnect(true);
-        //    }
-        //        }
     }
 }
