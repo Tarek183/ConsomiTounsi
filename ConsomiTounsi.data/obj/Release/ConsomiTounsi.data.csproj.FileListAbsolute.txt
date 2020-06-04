@@ -18,3 +18,4 @@ C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.data\obj\Release\ConsomiToun
 C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.data\obj\Release\ConsomiTounsi.data.csproj.CopyComplete
 C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.data\obj\Release\ConsomiTounsi.data.dll
 C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.data\obj\Release\ConsomiTounsi.data.pdb
+C:\Users\lenovo\Desktop\ConsomiTounsi\ConsomiTounsi.data\obj\Release\ConsomiTounsi.data.Migrations.SecondMig.resources

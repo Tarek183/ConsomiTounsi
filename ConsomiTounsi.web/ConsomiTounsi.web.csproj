@@ -2010,7 +2010,7 @@
     <Content Include="ContentAdmin\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="ContentAdmin\vendor\jquery\jquery.min.map" />
     <Content Include="ContentAdmin\vendor\jquery\jquery.slim.min.map" />
-    <None Include="Properties\PublishProfiles\ConsomiTounsiTarek - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\ConsomiTounsiwebV1 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
