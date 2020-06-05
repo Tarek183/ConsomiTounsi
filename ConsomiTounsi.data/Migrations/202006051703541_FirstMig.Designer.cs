@@ -7,13 +7,13 @@ namespace ConsomiTounsi.data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class SecondMig : IMigrationMetadata
+    public sealed partial class FirstMig : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SecondMig));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FirstMig));
         
         string IMigrationMetadata.Id
         {
-            get { return "202006031445578_SecondMig"; }
+            get { return "202006051703541_FirstMig"; }
         }
         
         string IMigrationMetadata.Source
