@@ -180,8 +180,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="ControllerApi\CommentsController.cs" />
-    <Compile Include="ControllerApi\PostsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BackController.cs" />
     <Compile Include="Controllers\CommentApiController.cs" />

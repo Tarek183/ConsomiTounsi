@@ -43,26 +43,40 @@ namespace ConsomiTounsi.web.Controllers
             return PostsXml;
         }
 
+        
         // GET: api/PostApi
-        public IEnumerable<PostModel> Get()
+       
+        [HttpGet]
+        public IHttpActionResult Get()
         {
-            return result;
+            return Json(result);
         }
-
         // GET api/PostApi/5
-        public Post Get(int id)
+
+        public IHttpActionResult Get(int id)
         {
             Post post = PostServ.GetById(id);
-            return post;
+            Post ndPost = new Post
+            {
+                Content = post.Content,
+                PostId = post.PostId,
+                PublishDate = post.PublishDate,
+                DisLike = post.DisLike
+            };
+            return Json(ndPost);
         }
 
-        // POST api/PostApi
+        // POST a
         [HttpPost]
-        public Post Post(Post post)
+        public IHttpActionResult Post(Post post)
         {
-            PostServ.Add(post);
-            PostServ.Commit();
-            return post;
+            using (var ctx = new MyContext())
+            {
+                ctx.Posts.Add(post);
+                ctx.SaveChanges();
+            }
+                
+            return Ok();
         }
 
         // PUT api/PostApi/5

@@ -18,6 +18,10 @@ namespace ConsomiTounsi.web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            var config = GlobalConfiguration.Configuration;
+
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling    = Newtonsoft.Json.ReferenceLoopHandling.Serialize;
+            config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling            = Newtonsoft.Json.PreserveReferencesHandling.Objects;
         }
     }
 }
