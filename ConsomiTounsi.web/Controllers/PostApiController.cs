@@ -74,8 +74,7 @@ namespace ConsomiTounsi.web.Controllers
             {
                 ctx.Posts.Add(post);
                 ctx.SaveChanges();
-            }
-                
+            }              
             return Ok();
         }
 

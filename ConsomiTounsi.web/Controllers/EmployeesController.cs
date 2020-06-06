@@ -10,30 +10,58 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using ConsomiTounsi.data;
 using ConsomiTounsi.domain.Entities;
+using ConsomiTounsi.service;
+using ConsomiTounsi.web.Models;
 
 namespace ConsomiTounsi.web.Controllers
 {
     public class EmployeesController : ApiController
     {
-        private MyContext db = new MyContext();
-
-        // GET: api/Employees
-        public IQueryable<Employee> GetEmployees()
+        IEmployeeService ES;
+        List<EmployeeModel> result = new List<EmployeeModel>();
+        public EmployeesController()
         {
-            return db.Employees;
+            ES = new EmployeeService();
+            Index();
+            result = Index().ToList();
+        }
+        public List<EmployeeModel> Index()
+        {
+            IEnumerable<Employee> Employees = ES.GetMany();
+            List<EmployeeModel> EmployeesXml = new List<EmployeeModel>();
+            foreach (Employee e in Employees)
+            {
+                EmployeesXml.Add(new EmployeeModel
+                {
+                    EmployeId = e.EmployeId,
+                    FirstName = e.FirstName,
+                    LastName = e.LastName,
+                    email = e.email,
+                    phoneNumber = e.phoneNumber
+                });
+            }
+            return EmployeesXml;
+        }
+        // GET: api/Employees
+        [HttpGet]
+        public IHttpActionResult Get()
+        {
+            return Json(result);
         }
 
         // GET: api/Employees/5
-        [ResponseType(typeof(Employee))]
-        public IHttpActionResult GetEmployee(int id)
+        public IHttpActionResult Get(int id)
         {
-            Employee employee = db.Employees.Find(id);
-            if (employee == null)
+            Employee e = ES.GetById(id);
+            Employee ndEmpl = new Employee
             {
-                return NotFound();
-            }
-
-            return Ok(employee);
+                EmployeId = e.EmployeId,
+                FirstName = e.FirstName,
+                LastName = e.LastName,
+                email = e.email,
+                phoneNumber = e.phoneNumber
+            };
+            return Json(ndEmpl);
         }
 
         // PUT: api/Employees/5
