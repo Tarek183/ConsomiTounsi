@@ -1,8 +1,10 @@
-﻿using ConsomiTounsi.service;
+﻿using ConsomiTounsi.domain.Entities;
+using ConsomiTounsi.service;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -104,23 +106,23 @@ namespace ConsomiTounsi.web.Controllers
         // GET: Back/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        // POST: Back/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
+            var userId = User.Identity.GetUserId();
+            if (id == null)
             {
-                // TODO: Add delete logic here
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
+             //User.Identity.GetUserId<string>();
+            User u = US.GetById(userId);
+
+            if (userId == null)
             {
-                return View();
+                return HttpNotFound();
             }
+
+            US.Delete(u);
+            US.Commit();
+            return RedirectToAction("Index");
         }
     }
 }

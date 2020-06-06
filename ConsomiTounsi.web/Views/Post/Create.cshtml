@@ -15,9 +15,6 @@
     
     <link href="~/CSS/BtnInsideInput.css" rel="stylesheet" />
    
-    <script src="~/Scripts/rating/jquery.min.js"></script>
-    <script src="~/Scripts/rating/star-rating.js"></script>
-    <link href="~/CSS/rating/star-rating.css" rel="stylesheet" type="text/css" />
     <!--Google Webfont-->
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600,600italic,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -101,56 +98,6 @@
                                     <div class="user-info">
                                         <a href="timeline.html" class="profile-link">@ViewBag.Username</a>
                                         <button class="btn" onclick="location.href='@Url.Action("Edit", "Post", new { id = item.PostId })'" style="margin-left:360px"><i class="fa fa-pencil" style="color:limegreen"></i></button>
-                                        <!-- Bootstrap Modal Dialog For update post-->
-                                        @*******************************************************************@
-                                        @*<button class="btn" style="margin-left:360px" data-target="#UpdateModal_@item.PostId" data-toggle="modal"><i class="fa fa-pencil" style="color:limegreen"></i></button>
-            @Html.ActionLink("Edit", "Edit", new { id = item.PostId })
-            <div class="modal fade" id="UpdateModal_@item.PostId" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                @using (Html.BeginForm("Edit", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    <div class="modal-dialog">
-                        <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
-                            <ContentTemplate>
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title"><asp:Label ID="lblModalTitle" runat="server" Text=""></asp:Label></h4>
-                                        <h2>Update your post...</h2>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.Post.Content, htmlAttributes: new { @class = "control-label col-md-2" })
-                                            <div class="col-md-10">
-                                                @Html.EditorFor(model => model.Post.Content, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Post.Content, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.Post.UrlImage, htmlAttributes: new { @class = "control-label col-md-2" })
-                                            <div class="col-md-10">
-                                                <label class="label">Image</label>
-                                                @Html.TextBox("file", "", new { type = "file", @class = "input--style-4", style = "width:800px" })
-                                                @Html.ValidationMessageFor(model => model.Post.UrlImage, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                        <textarea name="texts" id="exampleTextarea" cols="200" rows="2" class="form-control">@item.Content</textarea>
-                                        <label class="label">Image</label>
-                                        @Html.TextBox("file", "", new { type = "file", @class = "input--style-4", style = "width:800px" })
-                                        @Html.ValidationMessageFor(model => model.UrlImage, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" value="Save" class="btn btn-success">Save</button>
-                                        <button type="submit" class="btn btn-success"> @Html.ActionLink("Update", "Edit", new { id = item.PostId })</button>
-                                        <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                                    </div>
-                                </div>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </div>
-                }
-            </div>*@
-                                        @*******************************************************************@
-
                                         <!-- Bootstrap Modal Dialog For Delete post-->
                                         @*******************************************************************@
                                         <button class="btn" data-target="#DeleteModal_@item.PostId" data-toggle="modal"><i class="fa fa-trash" style="color:red"></i></button>
@@ -196,31 +143,6 @@
                                             <div class="post-comment">
                                                 <img src="@Url.Content("~/Content/Uploads/"+@Model.User.image)" alt="" class="profile-photo-sm" />
                                                 <p><a href="timeline.html" class="profile-link">John</a><br />@c.ContentComment </p>
-                                                <!-- Bootstrap Modal Dialog For update comment-->
-                                                @*******************************************************************@
-                                                @*<div class="modal fade" id="UpdateModalC_@c.CommentId" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
-                                <ContentTemplate>
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title"><asp:Label ID="lblModalTitle" runat="server" Text=""></asp:Label></h4>
-                                            <h2>Update your comment... @c.CommentId</h2>
-                                        </div>
-                                        <div class="modal-body">
-                                            <textarea name="texts" id="exampleTextarea" cols="200" rows="2" class="form-control">@c.ContentComment</textarea>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-success"> @Html.ActionLink("Update", "EditComment", new { id = c.CommentId })</button>
-                                            <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                                        </div>
-                                    </div>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </div>
-                    </div>*@
-                                                @*******************************************************************@
                                                 <!-- Bootstrap Modal Dialog For Delete comemnt-->
                                                 @*******************************************************************@
                                                 <div class="modal fade" id="DeleteModalC_@c.CommentId" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
