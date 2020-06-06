@@ -76,25 +76,20 @@ namespace ConsomiTounsi.web.Controllers
         }
 
         // PUT: api/Employees/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // PUT: api/Employees/5
         [HttpPut]
-        public IHttpActionResult Put(EmployeeModel em)
+        public IHttpActionResult Put(int id, EmployeeModel em)
         {
             if (!ModelState.IsValid)
                 return BadRequest("Not a valid model");
 
             using (var ctx = new MyContext())
             {
-                var existingFormation = ctx.Employees.Where(p => p.EmployeId == em.EmployeId)
+                var existingFormation = ctx.Employees.Where(e => e.EmployeId == em.EmployeId)
                                                         .FirstOrDefault<Employee>();
 
                 if (existingFormation != null)
                 {
-                    //existingFormation.EmployeId = em.EmployeId;
+                    existingFormation.EmployeId = em.EmployeId;
                     existingFormation.FirstName = em.FirstName;
                     existingFormation.LastName = em.LastName;
                     existingFormation.email = em.email;
@@ -109,6 +104,32 @@ namespace ConsomiTounsi.web.Controllers
             return Ok();
         }
 
+        //public IHttpActionResult Put(int id, EmployeeModel student)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return BadRequest("Not a valid model");
+        //    using (var ctx = new MyContext())
+        //    {
+        //        var existingStudent = ctx.Events.Where(s => s.Id == id)
+        //                                                .FirstOrDefault<Event>();
+        //        if (existingStudent != null)
+        //        {
+        //            existingFormation.EmployeId = em.EmployeId;
+        //            existingFormation.FirstName = em.FirstName;
+        //            existingFormation.LastName = em.LastName;
+        //            existingFormation.email = em.email;
+        //            existingFormation.phoneNumber = em.phoneNumber;
+        //            ctx.SaveChanges();
+        //        }
+        //        else
+        //        {
+        //            return NotFound();
+        //        }
+        //    }
+        //    return Ok();
+        //}
+
+
         // DELETE: api/Employees/5
         public IHttpActionResult Delete(int id)
         {
@@ -117,85 +138,5 @@ namespace ConsomiTounsi.web.Controllers
             ES.Commit();
             return Ok(emp);
         }
-
-        // PUT: api/Employees/5
-        //[ResponseType(typeof(void))]
-        //public IHttpActionResult PutEmployee(int id, Employee employee)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    if (id != employee.EmployeId)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    db.Entry(employee).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        db.SaveChanges();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!EmployeeExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return StatusCode(HttpStatusCode.NoContent);
-        //}
-
-        // POST: api/Employees
-        //[ResponseType(typeof(Employee))]
-        //public IHttpActionResult PostEmployee(Employee employee)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    db.Employees.Add(employee);
-        //    db.SaveChanges();
-
-        //    return CreatedAtRoute("DefaultApi", new { id = employee.EmployeId }, employee);
-        //}
-
-        //// DELETE: api/Employees/5
-        //[ResponseType(typeof(Employee))]
-        //public IHttpActionResult DeleteEmployee(int id)
-        //{
-        //    Employee employee = db.Employees.Find(id);
-        //    if (employee == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    db.Employees.Remove(employee);
-        //    db.SaveChanges();
-
-        //    return Ok(employee);
-        //}
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
-
-        //private bool EmployeeExists(int id)
-        //{
-        //    return db.Employees.Count(e => e.EmployeId == id) > 0;
-        //}
     }
 }
