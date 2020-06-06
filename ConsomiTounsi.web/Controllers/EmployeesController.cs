@@ -75,7 +75,7 @@ namespace ConsomiTounsi.web.Controllers
             return Ok();
         }
 
-        // PUT: api/Employees
+        // PUT: api/Employees/5
         public void Put(int id, [FromBody]string value)
         {
         }
@@ -94,7 +94,7 @@ namespace ConsomiTounsi.web.Controllers
 
                 if (existingFormation != null)
                 {
-                    existingFormation.EmployeId = em.EmployeId;
+                    //existingFormation.EmployeId = em.EmployeId;
                     existingFormation.FirstName = em.FirstName;
                     existingFormation.LastName = em.LastName;
                     existingFormation.email = em.email;
@@ -107,6 +107,15 @@ namespace ConsomiTounsi.web.Controllers
                 }
             }
             return Ok();
+        }
+
+        // DELETE: api/Employees/5
+        public IHttpActionResult Delete(int id)
+        {
+            Employee emp = ES.GetById(id);
+            ES.Delete(emp);
+            ES.Commit();
+            return Ok(emp);
         }
 
         // PUT: api/Employees/5
