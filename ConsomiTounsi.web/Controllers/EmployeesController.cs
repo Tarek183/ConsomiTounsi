@@ -63,6 +63,51 @@ namespace ConsomiTounsi.web.Controllers
             };
             return Json(ndEmpl);
         }
+        // Post: api/Employees
+        [HttpPost]
+        public IHttpActionResult Post(Employee emp)
+        {
+            using (var ctx = new MyContext())
+            {
+                ctx.Employees.Add(emp);
+                ctx.SaveChanges();
+            }
+            return Ok();
+        }
+
+        // PUT: api/Employees
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // PUT: api/Employees/5
+        [HttpPut]
+        public IHttpActionResult Put(EmployeeModel em)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest("Not a valid model");
+
+            using (var ctx = new MyContext())
+            {
+                var existingFormation = ctx.Employees.Where(p => p.EmployeId == em.EmployeId)
+                                                        .FirstOrDefault<Employee>();
+
+                if (existingFormation != null)
+                {
+                    existingFormation.EmployeId = em.EmployeId;
+                    existingFormation.FirstName = em.FirstName;
+                    existingFormation.LastName = em.LastName;
+                    existingFormation.email = em.email;
+                    existingFormation.phoneNumber = em.phoneNumber;
+                    ctx.SaveChanges();
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            return Ok();
+        }
 
         // PUT: api/Employees/5
         //[ResponseType(typeof(void))]
