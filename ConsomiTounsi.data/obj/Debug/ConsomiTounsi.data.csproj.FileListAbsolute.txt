@@ -59,4 +59,3 @@ C:\Users\lenovo\Desktop\clone\ConsomiTounsi\ConsomiTounsi.data\obj\Debug\Consomi
 C:\Users\lenovo\Desktop\clone\ConsomiTounsi\ConsomiTounsi.data\obj\Debug\ConsomiTounsi.data.pdb
 C:\Users\lenovo\Desktop\clone\ConsomiTounsi\ConsomiTounsi.data\obj\Debug\ConsomiTounsi.data.Migrations.FirstMig.resources
 C:\Users\lenovo\Desktop\clone\ConsomiTounsi\ConsomiTounsi.data\obj\Debug\ConsomiTounsi.data.csproj.GenerateResource.cache
-C:\Users\lenovo\Desktop\clone\ConsomiTounsi\ConsomiTounsi.data\obj\Debug\ConsomiTounsi.data.Migrations.SecondMig.resources

@@ -68,13 +68,9 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\202006051703541_FirstMig.cs" />
-    <Compile Include="Migrations\202006051703541_FirstMig.designer.cs">
-      <DependentUpon>202006051703541_FirstMig.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006061428359_SecondMig.cs" />
-    <Compile Include="Migrations\202006061428359_SecondMig.designer.cs">
-      <DependentUpon>202006061428359_SecondMig.cs</DependentUpon>
+    <Compile Include="Migrations\202006061457427_FirstMig.cs" />
+    <Compile Include="Migrations\202006061457427_FirstMig.designer.cs">
+      <DependentUpon>202006061457427_FirstMig.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyContext.cs" />
@@ -94,11 +90,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006051703541_FirstMig.resx">
-      <DependentUpon>202006051703541_FirstMig.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006061428359_SecondMig.resx">
-      <DependentUpon>202006061428359_SecondMig.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006061457427_FirstMig.resx">
+      <DependentUpon>202006061457427_FirstMig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

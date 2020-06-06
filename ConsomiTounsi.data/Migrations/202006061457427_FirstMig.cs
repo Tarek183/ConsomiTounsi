@@ -120,6 +120,18 @@
                 .Index(t => t.IdentityRole_Id);
             
             CreateTable(
+                "dbo.Employees",
+                c => new
+                    {
+                        EmployeId = c.Int(nullable: false, identity: true),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        email = c.String(),
+                        phoneNumber = c.String(),
+                    })
+                .PrimaryKey(t => t.EmployeId);
+            
+            CreateTable(
                 "dbo.IdentityRoles",
                 c => new
                     {
@@ -149,6 +161,7 @@
             DropIndex("dbo.Comments", new[] { "UserId" });
             DropIndex("dbo.Comments", new[] { "PostId" });
             DropTable("dbo.IdentityRoles");
+            DropTable("dbo.Employees");
             DropTable("dbo.IdentityUserRoles");
             DropTable("dbo.IdentityUserLogins");
             DropTable("dbo.Contacts");

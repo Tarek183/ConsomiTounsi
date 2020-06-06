@@ -46,8 +46,10 @@
   <ItemGroup>
     <Compile Include="CommentService.cs" />
     <Compile Include="ContactService.cs" />
+    <Compile Include="EmployeeService.cs" />
     <Compile Include="ICommentService.cs" />
     <Compile Include="IContactService.cs" />
+    <Compile Include="IEmployeeService.cs" />
     <Compile Include="IPostService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="PostService.cs" />
