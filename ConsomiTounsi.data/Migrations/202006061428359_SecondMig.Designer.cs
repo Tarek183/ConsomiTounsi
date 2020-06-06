@@ -13,7 +13,7 @@ namespace ConsomiTounsi.data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202006061424214_SecondMig"; }
+            get { return "202006061428359_SecondMig"; }
         }
         
         string IMigrationMetadata.Source

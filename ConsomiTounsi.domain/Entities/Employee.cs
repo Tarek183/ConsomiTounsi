@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsomiTounsi.domain.Entities
 {
-    class Employee
+    public class Employee
     {
         [Key]
         public int EmployeId { get; set; }
@@ -15,7 +15,5 @@ namespace ConsomiTounsi.domain.Entities
         public string LastName { get; set; }
         public string email { get; set; }
         public string phoneNumber { get; set; }
-
-
     }
 }
