@@ -1,0 +1,80 @@
+﻿@model ConsomiTounsi.domain.Entities.Wish
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@* the cover *@
+@*<div class="timeline-cover cover" style="margin-left:80px; margin-top:0px;">
+
+    <img src="~/Content/images/covers/2.jpg" alt="animated" class="img-responsive cover" />
+</div>*@
+
+<h2><span class="fa fa-star checked"></span> Hey <b>@ViewBag.KidFirstName</b></h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 class="text-muted"><b>Wishes Are Waiting For You!</b></h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.KidWish, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KidWish, new { htmlAttributes = new { @class = "form-control" , placeholder="Swim with whale sharks"} })
+                @Html.ValidationMessageFor(model => model.KidWish, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Desc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Desc,10,80, new { htmlAttributes = new { @class = "form-control" , placeholder="Since I was a child , I always had the a big interest in the sea life ... "} });
+                @Html.ValidationMessageFor(model => model.Desc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExpirationDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ExpirationDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ExpirationDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FundToRaise, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FundToRaise, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FundToRaise, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    <p>
+        @Html.HiddenFor(model => model.KidID)
+    </p>
+    @*<h2>pop up ! YOUR wish is about to be realised now</h2>*@
+    @*<h2>i would like to be informed when a donation is made on my belhalf</h2>*@
+
+
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

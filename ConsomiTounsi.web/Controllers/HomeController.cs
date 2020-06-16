@@ -24,8 +24,25 @@ namespace ConsomiTounsi.web.Controllers
         }
         public ActionResult Index()
         {
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            if (User.IsInRole("Member"))
+            {
+                return RedirectToAction("Create", "Post");
+            }
+            if (User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Back");
+            }
+            if (User.IsInRole("DeliveryBoy"))
+            {
+                return RedirectToAction("Index", "Back");
+            }
             return View();
         }
+
         public ActionResult About()
         {
             bool val1 = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;

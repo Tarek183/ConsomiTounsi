@@ -1,0 +1,156 @@
+﻿@model IEnumerable<ConsomiTounsi.web.Models.ProductM>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View fdhjlk</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdProduct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imageP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.barcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.marque)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdRayon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.qte)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProduct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.imageP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.barcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.marque)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdRayon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.qte)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Add", "Add", new { /* id = item.PrimaryKey */}) |
+                <button id="btn_@Html.DisplayFor(modelItem => item.IdProduct)">Add to Bag</button>
+            </td>
+        </tr>
+    }
+
+</table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
+
+<script type="text/javascript">
+
+    $("[id^=btn_]").click(function () {
+        str = this.id;
+        idp = str.substr(4, 4);
+        $.ajax({
+            url: "https://localhost:44326/ProductFront/GetQuantity/" + idp,
+            success: function (result) {
+                $.ajax({
+                    url: "https://localhost:44326/LigneCommand/CreateCommandLineApi/" + idp,
+                    success: function (result) {
+                        $.ajax({
+                            url: "https://localhost:44326/LigneCommand/GetNumberLineApi",
+                            success: function (res) {
+                                $("#card").html("Bag(" + res + ")");
+                               
+                            }
+
+                        })                        
+                    }
+
+                })
+
+            }
+        })
+    });
+    $(document).ready(function () { 
+        $.ajax({
+             url: "https://localhost:44326/LigneCommand/GetNumberLineApi",
+             success: function (res) {
+               $("#card").html("Bag(" + res + ")");
+
+             }
+         }) 
+        $("#clear").click(function () {
+            $.ajax({
+                url: "https://localhost:44326/LigneCommand/DeleteAll",
+                success: function () {
+                    $.ajax({
+                        url: "https://localhost:44326/LigneCommand/GetNumberLineApi",
+                          success: function (res) {
+                                $("#card").html("Bag(" + res + ")");
+
+                          }
+                    })
+
+                }
+            })
+
+        });
+       
+    });
+   
+</script>

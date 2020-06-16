@@ -27,7 +27,7 @@
     <!-- Header
            ================================================= -->
     <header id="header">
-        <nav class="navbar navbar-default navbar-fixed-top menu" style="background-color:#D9DEE4; width:1299px; margin-left:223px">
+        <nav class="navbar navbar-default navbar-fixed-top menu" style="background-color:#D9DEE4; width:1465px; margin-left:223px">
             <div class="container">
                     <!-- <a class="navbar-brand" href="index.html"><img src="images/logo.ico" alt="logo" /></a> -->
                     <b><a class="navbar-brand" href="index.html"><p style="color:cadetblue">619|Consomi Tounsi</p></a></b>
@@ -125,29 +125,29 @@
                 </div>
             </li>
             @*<li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                        <i class="fas fa-funnel-dollar"></i>
-                        <span>Discounts</span>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-funnel-dollar"></i>
+                <span>Discounts</span>
+            </a>
+
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+
+                    <a class="collapse-item">
+                        @Html.ActionLink("View Discounts ", "Index", "Discount")
                     </a>
+                </div>
+            </div>
 
-                    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-
-                            <a class="collapse-item">
-                                @Html.ActionLink("View Discounts ", "Index", "Discount")
-                            </a>
-                        </div>
-                    </div>
-
-                </li>*@
+        </li>*@
 
             <!-- Nav Item - Tables -->
-        <li class="nav-item">
-            <a class="nav-link" @Html.ActionLink("Contacts ", "IndexContact", "Back")
-                </a>
-        </li>           
             <li class="nav-item">
-                <a class="nav-link" @Html.ActionLink("Users ", "Index","Back")
+                <a class="nav-link" @Html.ActionLink("Contacts ", "IndexContact", "Back")
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" @Html.ActionLink("Users ", "Index", "Back")
                 </a>
             </li>
             <!-- Divider -->
@@ -167,10 +167,10 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item">
-                            @Html.ActionLink("View Discounts Charts ", "Dashboard", "Discount")
+                            @Html.ActionLink("View Charts Product-Categorie", "Index", "LigneCommandBack")
                         </a>
                         <a class="collapse-item">
-                            @Html.ActionLink("View Packs Charts ", "DashboardPack", "Packs")
+                            @Html.ActionLink("View Charts Product-selling", "Index2", "Productt")
                         </a>
                     </div>
 
@@ -180,9 +180,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span>
+                <a class="nav-link" @Html.ActionLink("Rayon ", "Index", "Rayon")
                 </a>
             </li>
 

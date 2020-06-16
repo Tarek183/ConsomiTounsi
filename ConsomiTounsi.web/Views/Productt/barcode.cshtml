@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "barcode";
+}
+
+<h2>barcode</h2>
+
+@using (Html.BeginForm("barcode", "Productt", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <input type="file" name="barCodeUpload" class="form-control col-4" id="barCodeUpload" />
+    <input type="submit" class="btn btn-primary" id="UpLoadButton" value="upload" />
+    <hr />
+    <span class="btn-danger">@ViewBag.ErrorMessage </span>
+    <input type="text" class="form-control" value="@ViewBag.BarCode" />
+
+    if (ViewBag.BarImage != null)
+    {
+        <img src="@ViewBag.BarImage" alt="" />
+
+
+    }
+}
+
+
+

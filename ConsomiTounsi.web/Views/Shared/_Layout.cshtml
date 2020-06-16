@@ -12,6 +12,13 @@
     @Styles.Render("~/CSS/style.css")
     @Styles.Render("~/CSS/ionicons.min.css")
     @Styles.Render("~/CSS/font-awesome.min.css")
+    @Styles.Render("~/CSS/wish/card.css")
+    @Styles.Render("~/CSS/wish/Style-NotFound.css")
+
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:700,900" rel="stylesheet">
+
 </head>
 <body>
     <!-- Header
@@ -38,10 +45,39 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right main-menu">
                         <li class="dropdown">
-                            @Html.ActionLink("Your posts", "Index", "Post")
+                            @Html.ActionLink("Products", "Index", "Productt")
                         </li>
                         <li class="dropdown">
-                            @Html.ActionLink("All posts", "Create", "Post")
+                            @Html.ActionLink("Rayon", "IndexClient", "Rayon")
+                        </li>
+
+                        @*@Html.ActionLink(".", "Index", "LigneCommand")*@
+                        <li>
+                            <button type="button" onclick="location.href='@Url.Action("Index", "LigneCommand")'" style="background-color:black;margin-top:8px;color:white" class="btn btn-dark" value="Bag" id="card">Bag</button>
+                        </li>
+                        <li>
+                            <button type="button" style="background-color:black;margin-top:8px;color:white" class="btn btn-dark" value="clear" id="clear">clear</button>
+                        </li>
+                        <li class="dropdown">
+                            @Html.ActionLink("Posts", "Create", "Post")
+                        </li>
+
+                        <li class="dropdown open">
+                            <a href="#" class="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Transform lives <span><img src="~/images/down-arrow.png" alt=""></span></a>
+                            <ul class="dropdown-menu page-list">
+                                <li style="color:burlywood">
+                                    @Html.ActionLink("Wish Stories", "Index", "Wishes")
+                                </li>
+                                <li style="color:burlywood">
+                                    @Html.ActionLink("Wishes you fundraised", "WishesFundRaisedByAFundRaiser", "Wishes")
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Make a Wish Come True", "Create", "FundRaisers")
+                                </li>
+                                <li>
+                                    @Html.ActionLink("About", "About", "Wishes")
+                                </li>
+                            </ul>
                         </li>
                         @*<li class="dropdown"><a href="index.html">Log Out</a></li>*@
                         <li class="dropdown open">

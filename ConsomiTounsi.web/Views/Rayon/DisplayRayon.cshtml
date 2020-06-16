@@ -1,0 +1,15 @@
+﻿@model ConsomiTounsi.web.Models.RayonM
+@{string path = "~/Content/Uploads/" + @Model.imageR;}
+<div style="float:left; margin:5px;">
+    <p>@Model.typeR</p>
+    <img alt="Product" src="@Url.Content(path)" width="150" height="150" />
+
+    <p>@Model.description</p>
+    <p>@Model.flag</p>
+
+    <p>@Html.ActionLink("Details", "Details", new { id = @Model.IdRayon })</p>
+    <p>@Html.ActionLink("Edit", "Edit", new { id = @Model.IdRayon })</p>
+    @Html.ActionLink("Delete", "Delete", new { id = @Model.IdRayon })
+
+
+</div>

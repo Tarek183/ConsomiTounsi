@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "barcodeGenerer";
+}
+
+<h2>barcodeGenerer</h2>
+@using (Html.BeginForm("barcodeGenerer", "Productt", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{     @Html.AntiForgeryToken()
+
+    <input type="text" name="barcode" class="form-control col-4" id="textcode" />
+    <br />
+    <input type="submit" class="btn btn-primary" id="btnGenerate" value="Generate" />
+    <hr />
+
+    <img src="@ViewBag.BarCodeImage" alt="" />
+
+
+
+
+
+
+
+
+}

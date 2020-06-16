@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ConsomiTounsi.web.Models.RayonM>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutBack.cshtml";
+}
+
+
+    <div class="card-body">
+        <br /><br /><br /><br />
+        <div class="form-group">
+            <h3 style="color:cadetblue">Rayons</h3>
+            <p>
+                @Html.ActionLink("Create New", "Create")
+                <span class="btn-danger">@ViewBag.ErrorMessage </span>
+
+            </p>
+
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    @Html.Partial("DisplayRayon", item);
+                }
+            }
+        </div>
+        </div>
+

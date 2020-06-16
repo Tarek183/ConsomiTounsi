@@ -14,6 +14,7 @@ using System.IO;
 using System.Net.Mail;
 using System.Net;
 using ConsomiTounsi.data;
+using ConsomiTounsi.service;
 
 namespace ConsomiTounsi.web.Controllers
 {
@@ -187,26 +188,40 @@ namespace ConsomiTounsi.web.Controllers
                     Role = model.Roles,
                     image = Image.FileName
                 };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                    FundRaiserService service = new FundRaiserService();
+                    FundRaiser fundRaiser = new FundRaiser()
+                    {
+                        Address = model.Address,
+                        BirthDate = model.BirthDate,
+                        Email = model.Email,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        PhoneNumber = model.Phone,
+                    };
+
+                    var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                        //var token = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                        //var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, protocol: Request.Url.Scheme);
-                        //UserManager.EmailService = new EmailService();
-                        //await UserManager.SendEmailAsync(user.Id,
-                        //    "Confirm your account",
-                        //        "Please confirm your account by clicking this link: <a href=\""
-                        //                          + confirmationLink + "\">link</a>");
+                        var token = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, protocol: Request.Url.Scheme);
+                        UserManager.EmailService = new EmailService();
+                        await UserManager.SendEmailAsync(user.Id,
+                            "Confirm your account",
+                                "Please confirm your account by clicking this link: <a href=\""
+                                                  + confirmationLink + "\">link</a>");
 
-                        //return RedirectToAction("SignalConfMail", "Account");
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        return RedirectToAction("SignalConfMail", "Account");
+                        //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                         //Ends Here 
                         var path2 = Path.Combine(Server.MapPath("~/Content/Uploads"), Image.FileName);
-                    Image.SaveAs(path2);
+                        Image.SaveAs(path2);
 
-                    return RedirectToAction("Login", "Account");
-                    //return RedirectToAction("Index", "Home");
+                        //return RedirectToAction("Login", "Account");
+                        service.Add(fundRaiser);
+                        service.Commit();
+
+                        return RedirectToAction("Index", "Home");
                 }
                     ViewBag.Name = new SelectList(ctx.Roles.ToList());
                     AddErrors(result);

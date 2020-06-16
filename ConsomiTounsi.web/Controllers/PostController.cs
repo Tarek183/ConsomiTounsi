@@ -287,8 +287,6 @@ namespace ConsomiTounsi.web.Controllers
         public ActionResult Like(int id)
         {
             Post update = ctx.Posts.ToList().Find(u => u.PostId == id);
-            //PS.GetMany();
-            //Post update = PS.Get(u => u.PostId == id);
 
             update.Like += 1;
             if (update.DisLike > 0)

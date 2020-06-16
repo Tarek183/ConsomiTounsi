@@ -1,0 +1,12 @@
+﻿@model ConsomiTounsi.web.Models.ProductM
+
+@{
+    ViewBag.Title = "Categories";
+}
+
+<h2>Categories</h2>
+
+
+@Html.DropDownList("IdProduct", (SelectList)ViewData["MyProducts"], "CategorieProduits")
+@Html.ValidationMessageFor(model => model.IdProduct, "", new { @class = "text-danger" })
+

@@ -1,0 +1,73 @@
+﻿@model ConsomiTounsi.web.Models.RayonM
+
+@{
+    ViewBag.Title = "DetailsClient";
+}
+
+<h2>DetailsClient</h2>
+
+<div>
+    <h4>RayonM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdRayon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdRayon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+        v
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.typeR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.typeR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imageR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imageR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.flag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.flag)
+        </dd>
+
+    </dl>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @using (Html.BeginForm("Categories", "Rayon", FormMethod.Get, new { enctype = "multipart/form-data" }))
+            {
+                @Html.DropDownList("IdProduct", (SelectList)ViewData["MyProducts"], "CategorieProduits")
+                @Html.ValidationMessageFor(model => model.products, "", new { @class = "text-danger" })
+                <br>
+                <input type="submit" value="Show for this categorie">
+            }
+        </div>
+    </div>
+
+
+
+
+</div>
+<p>
+    @Html.ActionLink("Back to List", "IndexClient")
+</p>

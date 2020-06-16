@@ -1,0 +1,188 @@
+﻿@model IEnumerable<ConsomiTounsi.domain.Entities.Wish>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+
+
+    <div class="col-md-7">
+
+
+
+
+        <!-- the title section-->
+        <section class="wrapper">
+            <div class="container">
+                <div>
+                    <h1 class="heading" style="text-align:center;padding-top:3%">
+                        Together We Create Life-Changing Wishes For kids With Critical Illness
+                    </h1>
+                </div>
+                <div class="content">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-xs-12 col-sm-4">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- filter wishes -->
+        <div>
+
+
+            <div class="">
+                <h2>Search</h2>
+                <i class="icon ion-ios-search-strong"></i>
+                <input type="text" class="form-control " id="myInput" placeholder="Search a wish story">
+            </div>
+
+        </div>
+
+
+
+        <div>
+            <p class="card-title">Filter wishes by diagnosis :</p>
+            @foreach (var diagnosis in ViewBag.diagnosis)
+            {
+
+                <a class=" btn btn-primary diagnosis" style="margin-top:10px;border-radius:10px">@diagnosis</a>
+
+            }
+        </div>
+
+
+
+        <div style="width:150%; margin:10%">
+
+
+
+           
+                <div class="container-fostrap">
+
+                    <div class="content">
+                        <div class="container">
+                            <div class="row">
+
+
+                                <!--display the wishes-->
+                                @foreach (var item in Model)
+                                {
+
+
+                                <div class="col-xs-12 col-sm-7" style="margin-left:10%">
+                                    
+                                    <div class="card wish-card">
+                                        <a class="img-card" href="#">
+
+                                            <img src="~/images/kids/kid1.png" />
+                                            @*<img src="@Html.DisplayFor(modelItem => item.Kid.ImagePath)" />*@
+
+                                        </a>
+
+                                        <div class="card-content">
+                                            <h4 class="card-title">
+                                                <a href="#">
+                                                    @Html.DisplayFor(modelItem => item.Kid.Name),
+                                                    @Html.DisplayFor(modelItem => item.Kid.Age)
+
+
+                                                </a>
+                                            </h4>
+                                            <h5 class="card-title">
+                                                <a href="#">
+                                                    Diagnosed with
+                                                    <span style="color:sandybrown">
+                                                        @Html.DisplayFor(modelItem => item.Kid.KidDiagnosis)
+                                                    </span>
+
+                                                </a>
+                                            </h5>
+
+                                        </div>
+                                        <div class="card-read-more">
+                                            <a href="@Url.Action("Details", "Wishes" , new { id = item.WishID } )" class="btn btn-link btn-block">
+                                                I Wish to
+                                                @Html.DisplayFor(modelItem => item.KidWish)
+
+
+                                                @if (item.ExpirationDate < DateTime.Now)
+                                                {
+                                                    <span class="badge badge-success">Closed</span>
+
+                                                }
+
+                                                @if (item.FundRaised >= item.FundToRaise)
+                                                {
+                                                    <span class="badge badge-success">Granted</span>
+
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge badge-success">Ongoing</span>
+                                                }
+
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                        }
+                                    
+
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+
+
+
+<table class="table">
+</table>
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+            //filter by text
+          $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $(".wish-card").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+
+
+            //filter by kid diagnosis
+
+            $(".diagnosis").click(function () {
+                var value = $(this).text();
+               $(".wish-card").filter(function() {
+                   $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                   
+            });
+
+            });
+
+
+
+        });
+
+        </script>
+
+
+    }

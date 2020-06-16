@@ -1,0 +1,178 @@
+﻿@model IEnumerable<ConsomiTounsi.domain.Entities.Wish>
+
+@*@{
+        ViewBag.Title = "FundRaiserWish";
+    }
+
+    <h2>FundRaiserWish</h2>*@
+
+<table class="table">
+    <div class="col-md-7">
+
+        <!-- Post Create Box
+        ================================================= -->
+        <!-- the title section-->
+        <section class="wrapper">
+            <div class="container-fostrap">
+                <div>
+                    <h1 class="heading">
+                        Together We Create Life-Changing Wishes For kids With Critical Illness
+                    </h1>
+                </div>
+                <div class="content">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-xs-12 col-sm-4">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div style="width:150%; margin:10%">
+
+            <section class="wrapper">
+                <div class="container-fostrap">
+
+                    <div class="content">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-xs-12 col-sm-7">
+                                    <!--display the wishes-->
+                                    @foreach (var item in Model)
+                                    {
+
+
+
+                                        <div class="card" style="margin-left:30%">
+                                            <a class="img-card" href="#">
+
+                                                <img src="~/images/kids/kid1.png" />
+                                                <img src="@Html.DisplayFor(modelItem => item.Kid.ImagePath)" />
+
+                                            </a>
+
+                                            <div class="card-content">
+                                                <h4 class="card-title">
+                                                    <a href="#">
+                                                        @Html.DisplayFor(modelItem => item.Kid.Name),
+                                                        @Html.DisplayFor(modelItem => item.Kid.Age)
+                                                    </a>
+                                                </h4>
+                                                <h5 class="card-title">
+                                                    <a href="#">
+                                                        Diagnosed with
+                                                        <span style="color:sandybrown">
+                                                            @Html.DisplayFor(modelItem => item.Kid.KidDiagnosis)
+                                                        </span>
+
+                                                    </a>
+                                                </h5>
+
+                                            </div>
+                                            <div class="card-read-more">
+                                                <a href="@Url.Action("Details", "Wishes" , new { id = item.WishID } )" class="btn btn-link btn-block">
+                                                    I Wish to
+                                                    @Html.DisplayFor(modelItem => item.KidWish)
+                                                </a>
+
+                                            </div>
+
+                                            <div class="card-read-more">
+                                                <a style="color:gray" href="@Url.Action("Edit", "Wishes" , new { id = item.WishID } )" class="btn btn-link btn-block">
+                                                    Update
+                                                </a>
+                                            </div>
+
+                                            <div class="card-read-more">
+                                                <a data-toggle="modal" data-target="#exampleModalCenter" style="color:red" href="#" class="btn btn-link btn-block">
+                                                    Delete
+                                                </a>
+
+                                            </div>
+
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title card-title" id="exampleModalLongTitle">Delete</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body card-title">
+                                                            For Deletion we are going to give back all the money people
+                                                            donated with as we are going to look for the cause of the
+                                                            deletion and it's coherency .
+
+
+                                                        </div>
+                                                        <div class="card-title">
+                                                            <label for="comment">Please mention the cause:</label>
+                                                            <textarea class="form-control center-block" rows="5" id="comment" required></textarea>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-danger" onclick="Delete(@item.WishID);">
+                                                                Delete
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+</table>
+
+
+@section Scripts {
+   
+    <script type="text/javascript">
+   
+        function Delete(id) {
+
+           var dataToPost = "{ id:" + id + "}";
+
+            $.ajax({
+                url: '@Url.Action("Delete", "Wishes")',
+                type: "POST",
+                dataType: 'json',
+                data: dataToPost,
+                cache: false,
+                contentType: "application/jsonrequest; charset=utf-8",
+                success: function (data) {
+                    location.reload();
+                }
+            });
+
+        
+            return true;
+        }
+
+        
+
+    </script>
+
+}

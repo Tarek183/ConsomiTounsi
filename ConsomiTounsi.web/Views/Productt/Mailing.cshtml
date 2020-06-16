@@ -1,0 +1,35 @@
+﻿@model ConsomiTounsi.web.Models.ProductM
+
+@{
+    ViewBag.Title = "Mailing";
+}
+
+<h2>Mailing</h2>
+
+<div>
+    <h4>ProductM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qte)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdProduct }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ConsomiTounsi.web.Models
@@ -65,6 +66,28 @@ namespace ConsomiTounsi.web.Models
     public class RegisterViewModel
     {
         [Required]
+        [MaxLength(30)]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [MaxLength(30)]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name = "Date of birth")]
+        public DateTime? BirthDate { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        public string Address { get; set; }
+
+
+
+        [Required]
         public string UserName { get; set; }
         [Required]
         public string Image { get; set; }
@@ -91,6 +114,25 @@ namespace ConsomiTounsi.web.Models
 
     public class EditViewModel
     {
+        [Required]
+        [MaxLength(30)]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [MaxLength(30)]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name = "Date of birth")]
+        public DateTime? BirthDate { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        public string Address { get; set; }
         [Required]
         public string UserName { get; set; }
         [Required]

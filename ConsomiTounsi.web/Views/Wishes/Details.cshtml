@@ -1,0 +1,129 @@
+﻿@model ConsomiTounsi.domain.Entities.Wish
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div class="container">
+
+    <!-- Timeline
+    ================================================= -->
+    <div class="timeline">
+         
+        <div class="timeline-cover">
+            <img src="~/images/bg1.jpg" />
+            <!--Timeline Menu for Large Screens-->
+            <div class="timeline-nav-bar hidden-sm hidden-xs">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="profile-info">
+                            <!--the picture , the name , the diagnosis , the age-->
+                            <img src="~/images/kids/kid1.png" alt="" class="img-responsive profile-photo" />
+                            <h3>
+                                <b>
+                                    @Html.DisplayFor(model => model.Kid.Name)
+
+                                </b>
+                            </h3>
+                            <p class="card-title" style=" font-size:medium">@Html.DisplayFor(model => model.Kid.Age) years old</p>
+                            <p class="card-title" style=" font-size:small">
+                                Diagnosed with
+                                <a href="https://www.google.com/search?q=@Model.Kid.KidDiagnosis" target="_blank" style="color: sandybrown;">
+                                    @Html.DisplayFor(model => model.Kid.KidDiagnosis)
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <!--the wish-->
+                        <ul class="list-inline profile-menu">
+                            <li>
+                                <a class="card-title">
+                                    I wish to
+                                    <span style="color:indianred">
+                                        @Html.DisplayFor(model => model.KidWish)
+                                    </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                        <ul class="follow-me list-inline">
+
+
+                            @if (@ViewBag.expirationDays < 0)
+                            {
+                                <li class="card-title" style="font-size:medium">
+                                    Closed
+                                </li>
+
+                            }
+                            else
+                            {
+                                <li class="card-title" style="font-size:medium">
+                                    expires in @ViewBag.expirationDays days
+                                </li>
+                            }
+
+
+
+
+                            <li><a class="btn-primary" href="http://localhost:8080/ProjJSFTemplate-web/pages/Donations/Create.jsf">Donate</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!--Timeline Menu for Large Screens End-->
+
+        </div>
+
+
+        <div id="page-contents">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-7">
+
+                    <!-- About
+                    ================================================= -->
+                    <div class="about-profile">
+                        <div class="about-content-block">
+                            <h4 class="grey card-title"><i class="fas fa-info"></i>Here's Exactly what I Am looking For</h4>
+                            <p style="font-size:medium"> @Html.DisplayFor(model => model.Desc)</p>
+                        </div>
+                        <div class="about-content-block ">
+                            <h4 class="grey">
+
+                                <p class=" card-title" style="font-size:large">
+                                    <i class="ion-ios-briefcase-outline icon-in-title"></i>
+                                    <span style="color:coral">@ViewBag.fundraiser @Html.DisplayFor(model => model.Kid.FundRaiser.FirstName)</span> is fundraising for me
+                                    <span style="color:cornflowerblue">@Html.DisplayFor(model => model.FundToRaise)</span>
+                                </p>
+                            </h4>
+
+                            <div class="progress " style="height:50% ">
+                                <div class="progress-bar progress-bar-striped bg-danger active" role="progressbar" style=" width: @ViewBag.progressFund%; height:100px;text-align:center" aria-valuenow="0" aria-valuemin="0" aria-valuemax="@Html.DisplayFor(model => model.FundToRaise)">
+                                    <p class="card-title">@Html.DisplayFor(model => model.FundRaised)Dt</p>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.WishID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

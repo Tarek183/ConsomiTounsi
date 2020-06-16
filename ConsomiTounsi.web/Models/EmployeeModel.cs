@@ -9,7 +9,7 @@ namespace ConsomiTounsi.web.Models
     public class EmployeeModel
     {
         [Key]
-        public int EmployeId { get; set; }
+        public int employeId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string email { get; set; }

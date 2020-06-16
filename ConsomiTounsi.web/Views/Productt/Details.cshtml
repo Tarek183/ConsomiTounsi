@@ -1,0 +1,109 @@
+﻿@model ConsomiTounsi.web.Models.ProductM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProductM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdProduct)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdProduct)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imageP)
+        </dt>
+
+
+        <dd>
+
+            @{string path = "~/Content/Upload/Amazing-Nature-Wallpaper.jpg";}
+            <img src="@Url.Content(path)" width="50" height="50" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.barcode)
+        </dt>
+
+        <dd>
+            @{string path1 = "~/Content/Upload/Screen Shot 2020-04-04 at 2.54.34 PM.png";}
+            <img src="@Url.Content(path1)" width="50" height="50" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.marque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.marque)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdRayon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdRayon)
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qte)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

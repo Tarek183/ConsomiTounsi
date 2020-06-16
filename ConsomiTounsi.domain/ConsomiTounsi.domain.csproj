@@ -59,9 +59,19 @@
   <ItemGroup>
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Contact.cs" />
+    <Compile Include="Entities\Coupons.cs" />
+    <Compile Include="Entities\Donation.cs" />
     <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Entities\Event.cs" />
+    <Compile Include="Entities\FundRaiser.cs" />
+    <Compile Include="Entities\Kid.cs" />
+    <Compile Include="Entities\LigneCommand.cs" />
+    <Compile Include="Entities\Panier.cs" />
     <Compile Include="Entities\Post.cs" />
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\Rayon.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\Wish.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

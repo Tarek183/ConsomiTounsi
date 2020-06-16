@@ -46,15 +46,33 @@
   <ItemGroup>
     <Compile Include="CommentService.cs" />
     <Compile Include="ContactService.cs" />
+    <Compile Include="CouponsService.cs" />
+    <Compile Include="DonationService.cs" />
     <Compile Include="EmployeeService.cs" />
+    <Compile Include="FundRaiserService.cs" />
     <Compile Include="ICommentService.cs" />
     <Compile Include="IContactService.cs" />
+    <Compile Include="ICouponsService.cs" />
+    <Compile Include="IDonationService .cs" />
     <Compile Include="IEmployeeService.cs" />
+    <Compile Include="IFundRaiserService.cs" />
+    <Compile Include="IKidService.cs" />
+    <Compile Include="ILigneCommandService.cs" />
+    <Compile Include="IPanierService.cs" />
     <Compile Include="IPostService.cs" />
+    <Compile Include="IProductService.cs" />
+    <Compile Include="IRayonService.cs" />
     <Compile Include="IUserService.cs" />
+    <Compile Include="IWishService.cs" />
+    <Compile Include="KidService.cs" />
+    <Compile Include="LigneCommandService.cs" />
+    <Compile Include="PanierService.cs" />
     <Compile Include="PostService.cs" />
+    <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RayonService.cs" />
     <Compile Include="UserService.cs" />
+    <Compile Include="WishService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConsomiTounsi.data\ConsomiTounsi.data.csproj">

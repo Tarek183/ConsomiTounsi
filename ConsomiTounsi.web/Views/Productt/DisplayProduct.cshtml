@@ -1,0 +1,92 @@
+﻿@model ConsomiTounsi.web.Models.ProductM
+@{string path = "~/Content/Upload/" + @Model.imageP;}
+
+<div style="float:left; margin:5px;">
+    <p>@Model.CategorieP</p>
+
+    @{string path3 = "~/Content/Upload/Amazing-Nature-Wallpaper.jpg";}
+    <img src="@Url.Content(path3)" width="50" height="50" />
+    <p>@Model.Nom</p>
+    <p>@Model.marque</p>
+    <p>@Model.price</p>dt
+
+    @using (Html.BeginForm("sendMail", "Productt", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <button type="submit" class="btn btn-sm btn-primary">Envoyer</button>
+    }
+
+
+
+
+    <p>@Html.ActionLink("Details", "Details", new { id = @Model.IdProduct })</p>
+    <p>@Html.ActionLink("Mailing", "Mailing", new { id = @Model.IdProduct })</p>
+    <p>@Html.ActionLink("Edit", "Edit", new { id = @Model.IdProduct })</p>
+    @Html.ActionLink("Delete", "Delete", new { id = @Model.IdProduct })
+
+
+</div>
+
+
+
+
+<script src="~/Scripts/chart/exporting.js"></script>
+<script src="~/Scripts/chart/highcharts.js"></script>
+<h2>List of products</h2>
+<figure class="highcharts-figure">
+    <div id="container"></div>
+    <p class="highcharts-description">
+        charts
+    </p>
+</figure>
+
+
+
+<p>
+    <button>  @Html.ActionLink("Create New Product", "Create")</button>
+    <span class="btn-danger">@ViewBag.ErrorMessage </span>
+
+</p>
+<script>
+    Highcharts.chart('container', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Our products'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+                name: '@Model.CategorieP',
+
+                 y: 100 ,
+             sliced: true,
+            selected: true
+        }]
+    }]
+});
+</script>

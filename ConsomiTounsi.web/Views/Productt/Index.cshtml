@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ConsomiTounsi.web.Models.ProductM>
+
+@{
+    ViewBag.Title = "Products";
+}
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        @Html.Partial("DisplayProduct", item);
+
+
+    }
+}

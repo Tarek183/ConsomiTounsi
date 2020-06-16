@@ -1,0 +1,66 @@
+﻿@model ConsomiTounsi.domain.Entities.Kid
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kid</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FundRaiser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FundRaiser.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KidFistName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KidFistName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KidSecondName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KidSecondName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KidBirthdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KidBirthdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KidDiagnosis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KidDiagnosis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MedicalProfessionalEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedicalProfessionalEmail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.KidID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

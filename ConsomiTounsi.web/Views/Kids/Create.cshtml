@@ -1,0 +1,146 @@
+﻿@model ConsomiTounsi.domain.Entities.Kid
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@* the cover *@
+@*<div class="timeline-cover cover" style="margin-left:80px; margin-top:0px;">
+
+        <img src="~/Content/images/covers/2.jpg" alt="animated" class="img-responsive cover" />
+    </div>*@
+
+<h2><b><span class="fa fa-star checked"></span> Refer to child</b></h2>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 class="text-muted">Wishes Need A Star Like You</h4>
+
+        @if (ViewBag.Message != null)
+        {
+            <p class="alert-danger">@ViewBag.Message</p>
+        }
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KidFistName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KidFistName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KidFistName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KidSecondName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KidSecondName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KidSecondName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KidBirthdate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KidBirthdate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KidBirthdate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KidDiagnosis, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KidDiagnosis, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KidDiagnosis, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MedicalProfessionalEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MedicalProfessionalEmail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MedicalProfessionalEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.RelationshipToChild, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="drop">
+                @Html.EnumDropDownListFor(model => model.RelationshipToChild, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RelationshipToChild, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" id="relation">
+            @Html.LabelFor(model => model.RelationSpecification, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RelationSpecification, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RelationSpecification, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" id="Organization">
+            @Html.LabelFor(model => model.OrganizationName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OrganizationName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OrganizationName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Next" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    <p>
+        @Html.HiddenFor(model => model.FundRaiserID)
+    </p>
+
+}
+
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //$('#relation').hide();
+            $('#Organization').hide();
+            $('#drop').change(function () {
+
+                var selectedText = $(this).find('option:selected').text();
+
+
+                if (selectedText == 'Relative') {
+
+                    $('#Organization').hide();
+                    $('#relation').show();
+                } else
+                    if (selectedText == 'Nonprofit') {
+
+                        $('#relation').hide();
+                        $('#Organization').show();
+                    } else {
+                        $('#relation').hide();
+                        $('#Organization').hide();
+                    }
+
+
+            })
+
+
+        })
+
+    </script>
+}

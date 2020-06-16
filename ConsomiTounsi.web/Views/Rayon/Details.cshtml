@@ -1,0 +1,58 @@
+﻿@model ConsomiTounsi.web.Models.RayonM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RayonM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdRayon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdRayon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.typeR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.typeR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imageR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imageR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.flag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.flag)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

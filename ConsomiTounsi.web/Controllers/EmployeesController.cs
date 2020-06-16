@@ -33,7 +33,7 @@ namespace ConsomiTounsi.web.Controllers
             {
                 EmployeesXml.Add(new EmployeeModel
                 {
-                    EmployeId = e.EmployeId,
+                    employeId = e.employeId,
                     FirstName = e.FirstName,
                     LastName = e.LastName,
                     email = e.email,
@@ -46,7 +46,23 @@ namespace ConsomiTounsi.web.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
-            return Json(result);
+            List<Employee> emps = new List<Employee>();
+            using (var ctx = new MyContext())
+            {
+                foreach (var emp in ctx.Employees.ToList())
+                {
+                    Employee ndEmpl = new Employee
+                    {
+                        employeId = emp.employeId,
+                        FirstName = emp.FirstName,
+                        LastName = emp.LastName,
+                        email = emp.email,
+                        phoneNumber = emp.phoneNumber
+                    };
+                    emps.Add(ndEmpl);
+                }
+                return Json(emps);
+            }
         }
 
         // GET: api/Employees/5
@@ -55,7 +71,7 @@ namespace ConsomiTounsi.web.Controllers
             Employee e = ES.GetById(id);
             Employee ndEmpl = new Employee
             {
-                EmployeId = e.EmployeId,
+                employeId = e.employeId,
                 FirstName = e.FirstName,
                 LastName = e.LastName,
                 email = e.email,
@@ -84,12 +100,11 @@ namespace ConsomiTounsi.web.Controllers
 
             using (var ctx = new MyContext())
             {
-                var existingFormation = ctx.Employees.Where(e => e.EmployeId == em.EmployeId)
+                var existingFormation = ctx.Employees.Where(e => e.employeId == id)
                                                         .FirstOrDefault<Employee>();
 
                 if (existingFormation != null)
                 {
-                    existingFormation.EmployeId = em.EmployeId;
                     existingFormation.FirstName = em.FirstName;
                     existingFormation.LastName = em.LastName;
                     existingFormation.email = em.email;
@@ -103,32 +118,6 @@ namespace ConsomiTounsi.web.Controllers
             }
             return Ok();
         }
-
-        //public IHttpActionResult Put(int id, EmployeeModel student)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return BadRequest("Not a valid model");
-        //    using (var ctx = new MyContext())
-        //    {
-        //        var existingStudent = ctx.Events.Where(s => s.Id == id)
-        //                                                .FirstOrDefault<Event>();
-        //        if (existingStudent != null)
-        //        {
-        //            existingFormation.EmployeId = em.EmployeId;
-        //            existingFormation.FirstName = em.FirstName;
-        //            existingFormation.LastName = em.LastName;
-        //            existingFormation.email = em.email;
-        //            existingFormation.phoneNumber = em.phoneNumber;
-        //            ctx.SaveChanges();
-        //        }
-        //        else
-        //        {
-        //            return NotFound();
-        //        }
-        //    }
-        //    return Ok();
-        //}
-
 
         // DELETE: api/Employees/5
         public IHttpActionResult Delete(int id)

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<ConsomiTounsi.web.Models.RayonM>
+
+@{
+    ViewBag.Title = "Rayons";
+}
+
+
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        @Html.Partial("DisplayRayonClient", item);
+
+
+    }
+} 

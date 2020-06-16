@@ -58,8 +58,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurations\CommentConfiguration.cs" />
+    <Compile Include="Configurations\CouponsConfiguration.cs" />
+    <Compile Include="Configurations\DateTimeConvention.cs" />
     <Compile Include="Configurations\IdentityUserLoginConfiguration.cs" />
     <Compile Include="Configurations\IdentityUserRoleConfiguration.cs" />
+    <Compile Include="Configurations\LigneCommandConfiguration.cs" />
+    <Compile Include="Configurations\Panier.cs" />
+    <Compile Include="Configurations\ProductConfiguration.cs" />
     <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="Infrastructure\DataBaseFactory.cs" />
     <Compile Include="Infrastructure\Disposable.cs" />
@@ -68,9 +73,9 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\202006061457427_FirstMig.cs" />
-    <Compile Include="Migrations\202006061457427_FirstMig.designer.cs">
-      <DependentUpon>202006061457427_FirstMig.cs</DependentUpon>
+    <Compile Include="Migrations\202006161402213_FinalMig.cs" />
+    <Compile Include="Migrations\202006161402213_FinalMig.designer.cs">
+      <DependentUpon>202006161402213_FinalMig.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyContext.cs" />
@@ -90,8 +95,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006061457427_FirstMig.resx">
-      <DependentUpon>202006061457427_FirstMig.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006161402213_FinalMig.resx">
+      <DependentUpon>202006161402213_FinalMig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
